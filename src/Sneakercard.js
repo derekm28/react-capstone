@@ -1,24 +1,21 @@
 import React from 'react';
-import ApiRequest from './Api';
+import { Link } from 'react-router-dom';
 
 //returns sneaker card of sneaker
 
-function Sneakercard(props){
-    //let imgSrc = `${SNEAKER_API}${imageUrl}`
+function SneakerCard({ title, brand, colorway, name, releaseDate, retailPrice, shoe, }){
+    console.debug('Sneakercard');
 
     return (
-        <div className = "Sneakercard">
-            <div className = 'Sneakercard-brand'>{props.brand}</div>
-            {/* <img className = 'Sneakercard-image' src = {imgSrc} /> */}
-            <div className = 'Sneakercard-data'>Colorway: {props.colorway}</div>
-            <div className = 'Sneakercard-data'>Name: {props.name}</div>
-            <div className = 'Sneakercard-data'>Release Date: {props.releaseDate}</div>
-            <div className = 'Sneakercard-data'>Retail Price: {props.retailPrice}</div>
-            <div className = 'Sneakercard-data'>Shoe: {props.shoe}</div>
-            <div className = 'Sneakercard-data'>Title: {props.title}</div>
-            <div className = 'Sneakercard-data'>Year: {props.year}</div>
+        <div className='SneakerCard card'>
+            <div className='card-body'>
+            <h6 className='card-title'>{title}</h6>
+            <p>{brand}</p>
+            <p>{name}</p>
+            <p>{shoe}</p>
+            </div>
         </div>
     );
 }
 
-export default Sneakercard;
+export default SneakerCard;

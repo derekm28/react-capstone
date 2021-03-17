@@ -1,5 +1,5 @@
 import React from 'react';
-import Sneakercard from './Sneakercard';
+import SneakerCard from './SneakerCard';
 
 function HomePage(props){
     return(
