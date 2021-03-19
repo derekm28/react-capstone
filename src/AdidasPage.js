@@ -7,6 +7,7 @@ import SneakerList from './SneakerList';
 
 function AdidasPage(){
     const url = "https://api.thesneakerdatabase.com/v1/sneakers?limit=10&brand=adidas";
+
     const [sneakers, setSneakers] = useState(null);
 
     let content = null;
@@ -21,13 +22,16 @@ function AdidasPage(){
         content =
         <div>
             <div>
-                <h1>{sneakers[0].brand}</h1>
+                <h1>{sneakers[2].brand}</h1>
             </div>
             <div>
-                <h1>{sneakers[0].name}</h1>
+                <h1>{sneakers[2].name}</h1>
             </div>
             <div>
-                <h1>{sneakers[0].retailPrice}</h1>
+                <h1>{sneakers[2].retailPrice}</h1>
+            </div>
+            <div>
+                <img src={sneakers[2].media.smallImageUrl}/>
             </div>
         </div>
 
