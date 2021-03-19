@@ -21,7 +21,7 @@ function SneakerList(){
     //triggered by search form submit; reloads sneakers
 
     async function search (name){
-        let sneakers = await ApiRequest.getSneakers(brand);
+        let sneakers = await ApiRequest.getSneakers();
         setSneakers(sneakers)
     }
 
