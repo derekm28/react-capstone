@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 //import Sneakercard from './Sneakercard';
 import axios from 'axios';
-import SneakerList from './SneakerList';
+import SneakerCardList from './SneakerCardList';
 
 
 
@@ -33,6 +33,9 @@ function AdidasPage(){
             <div>
                 <img src={sneakers[2].media.smallImageUrl}/>
             </div>
+            <div>
+            <SneakerCardList sneakers={sneakers} />
+        </div>
         </div>
 
     }

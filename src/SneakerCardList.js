@@ -15,6 +15,7 @@ function SneakerCardList ({ sneakers }){
         <div className='SneakerCardList'>
             {sneakers.map(sneaker => (
                 <SneakerCard
+                    key={sneaker.id}
                     title={sneaker.title}
                     colorway={sneaker.colorway}
                     name={sneaker.name}

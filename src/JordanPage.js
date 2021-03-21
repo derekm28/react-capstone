@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-//import Sneakercard from './Sneakercard';
+import SneakerCardList from './SneakerCardList';
 
 
 function JordanPage(props){
@@ -31,6 +31,9 @@ function JordanPage(props){
                 <div>
                     <img src={sneakers[3].media.smallImageUrl}/>
                 </div>
+                <div>
+            <SneakerCardList sneakers={sneakers} />
+        </div>
             </div>
         }
 

@@ -19,7 +19,7 @@ function SneakerCard({ title, brand, colorway, name, releaseDate, retailPrice, s
             <p>{releaseDate}</p>
             <p>{retailPrice}</p>
             <p>{colorway}</p>
-            <img {...image}/>
+            <img src={image}/>
             </div>
         </div>
     );
