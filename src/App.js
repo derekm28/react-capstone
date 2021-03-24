@@ -6,7 +6,11 @@ import ApiRequest from './Api';
 import SearchForm from './SearchForm';
 import NikePage from './NikePage';
 import JordanPage from './JordanPage';
-import AdidasPage from './AdidasPage'
+import AdidasPage from './AdidasPage';
+import SignUpPage from './SignUpPage';
+import LogIn from './LogInPage';
+import PrivateRoute from './PrivateRoute';
+import ProfileForm from './Profile';
 
 
 function App() {
@@ -28,6 +32,15 @@ function App() {
         <Route exact path = '/adidas'>
           <AdidasPage />
         </Route>
+        <Route exact path = '/signup'>
+          <SignUpPage />
+        </Route>
+        <Route exact path = '/login'>
+          <LogIn />
+        </Route>
+        <PrivateRoute exact path="/profile">
+          <ProfileForm />
+        </PrivateRoute>
       </BrowserRouter>
     </div>
   );
