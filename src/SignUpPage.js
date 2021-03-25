@@ -41,7 +41,7 @@ function SignUpPage({ signup }) {
 
     async function handleSubmit(evt) {
         evt.preventDefault();
-        let result = await signup(formData);
+        let result = await SignUpPage(formData);
         if (result.success) {
             history.push('./');
         }

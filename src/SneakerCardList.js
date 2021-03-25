@@ -26,6 +26,7 @@ function SneakerCardList ({ sneakers }){
                     year={sneaker.year}
                     image={sneaker.media.thumbUrl}
                 />
+
             ))}
         </div>
     );

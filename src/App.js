@@ -11,6 +11,7 @@ import SignUpPage from './SignUpPage';
 import LogIn from './LogInPage';
 import PrivateRoute from './PrivateRoute';
 import ProfileForm from './Profile';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 function App() {
