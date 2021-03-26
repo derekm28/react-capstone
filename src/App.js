@@ -6,7 +6,7 @@ import ApiRequest from './Api';
 import SearchForm from './SearchForm';
 import NikePage from './NikePage';
 import JordanPage from './JordanPage';
-import AdidasPage from './AdidasPage';
+import YeezyPage from './YeezyPage';
 import SignUpPage from './SignUpPage';
 import LogIn from './LogInPage';
 import PrivateRoute from './PrivateRoute';
@@ -20,9 +20,8 @@ function App() {
       <BrowserRouter>
         <Navbar />
         <Route exact path = '/'>
-        <HomePage />
-        <ApiRequest />
         <SearchForm />
+        <HomePage />
         </Route>
         <Route exact path = '/nike'>
           <NikePage />
@@ -30,8 +29,8 @@ function App() {
         <Route exact path = '/jordan'>
           <JordanPage />
         </Route>
-        <Route exact path = '/adidas'>
-          <AdidasPage />
+        <Route exact path = '/yeezy'>
+          <YeezyPage />
         </Route>
         <Route exact path = '/signup'>
           <SignUpPage />

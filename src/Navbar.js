@@ -18,8 +18,8 @@ function Navbar ({ logout }){
                 <NavLink exact to = '/jordan'>
                     Jordan
                 </NavLink>
-                <NavLink exact to = '/adidas'>
-                    Adidas
+                <NavLink exact to = '/yeezy'>
+                    Yeezy
                 </NavLink>
                 <NavLink exact to = '/profile'>
                     Profile
@@ -43,8 +43,8 @@ function Navbar ({ logout }){
                 <NavLink exact to = '/jordan'>
                     Jordan
                 </NavLink>
-                <NavLink exact to = '/adidas'>
-                    Adidas
+                <NavLink exact to = '/yeezy'>
+                    Yeezy
                 </NavLink>
                 <NavLink exact to = '/signup'>
                     Sign Up

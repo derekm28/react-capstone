@@ -72,7 +72,7 @@ function JordanPage(props){
 
     return(
         <div className = 'FrontPage'>
-            <h1 className = 'FrontPage-title'>Jordan Page</h1>
+            <h1 className = 'FrontPage-title'>Jordan</h1>
             <h2 className = 'FrontPage-title'>Displays SneakerCards for Jordan shoes</h2>
             <div>
                 <SneakerDisplay />

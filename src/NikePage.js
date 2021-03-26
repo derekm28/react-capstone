@@ -79,14 +79,11 @@ function NikePage() {
       }
       return (
         <div className='NikePage'>
-            <h1 className='NikePage-title'>Nike Page</h1>
+            <h1 className='NikePage-title'>Nike</h1>
             <h2 className='NikePage-title'>Displays SneakerCards for Nike shoes</h2>
             <div className='NikePage-cards'>
                 <div>
                     <SneakerDisplay />
-                </div>
-                <div>
-                    {content}
                 </div>
             </div>
         </div>

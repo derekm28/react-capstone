@@ -6,8 +6,8 @@ import { Card, Button } from "react-bootstrap";
 
 
 
-function AdidasPage(){
-    const url = "https://api.thesneakerdatabase.com/v1/sneakers?limit=100&brand=adidas";
+function YeezyPage(){
+    const url = "https://api.thesneakerdatabase.com/v1/sneakers?limit=100&name=yeezy&brand=adidas";
 
     const [sneakers, setSneakers] = useState(null);
 
@@ -75,8 +75,8 @@ function AdidasPage(){
 
     return(
         <div className = 'FrontPage'>
-            <h1 className = 'FrontPage-title'>Adidas Page</h1>
-            <h2 className = 'FrontPage-title'>Displays SneakerCards for Adidas shoes</h2>
+            <h1 className = 'FrontPage-title'>Yeezy</h1>
+            <h2 className = 'FrontPage-title'>Displays SneakerCards for Yeezy shoes</h2>
             <div>
                 <SneakerDisplay />
             </div>
@@ -84,4 +84,4 @@ function AdidasPage(){
     );
 }
 
-export default AdidasPage;
+export default YeezyPage;

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import SearchForm from './SearchForm';
-import ApiRequest from './Api';
+import ApiRequest from './api';
 import LoadingSpinner from './LoadingSpinner';
-import SneakerCard from './SneakerCard';
+import SneakerCard from './Sneakercard';
 
 //Shows a list of sneakers loaded from API
 //Reloads filtered sneakers on from search form

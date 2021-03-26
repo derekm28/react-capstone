@@ -1,52 +1,102 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 import SneakerCard from './SneakerCard';
+import Carousel from 'react-bootstrap/Carousel'
+import { Card, Button } from "react-bootstrap";
 
 function HomePage(props) {
+
+    const url = "https://api.thesneakerdatabase.com/v1/sneakers?limit=100";
+
+    const [sneakers, setSneakers] = useState(null);
+
+    let content = null;
+
+    useEffect(() => {
+        axios.get(url).then(res => {
+            setSneakers(res.data.results)
+        });
+    }, [url])
+
+    function SneakerDisplay() {
+        return (
+            <div className="row justify-content-center ">
+                {sneakers
+                    ? sneakers.map((s, idx) => (
+                        <Card
+                            key={s.id}
+                            className="mr-2"
+                            title={s.title}
+                            brand={s.brand}
+                            colorway={s.colorway}
+                            style={{ width: "18rem" }}
+                            shoe={s.shoe}
+                            name={s.name}>
+                            <Card.Body>
+                                <Card.Img variant="top" src={s.media.smallImageUrl} />
+                                <Card.Title>{s.title}</Card.Title>
+                                <Card.Text>
+                                    {s.brand}
+                                    {s.name}
+                                    {s.shoe}
+                                    {s.colorway}
+                        ${s.retailPrice}
+                                </Card.Text>
+                            </Card.Body>
+                        </Card>
+                    ))
+                    : null}
+            </div>
+        );
+    }
     return (
         <div className='HomePage'>
-            <h1 className='HomePage-title'>Home Page</h1>
+            <h1 className='HomePage-title'>Home</h1>
             <div className='HomePage-cards'>
-            <div id="carouselExampleCaptions" className="carousel slide" data-bs-ride="carousel">
-  <div className="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img src="https://images.stockx.com/images/Nike-Court-Borough-Low-2-Black-University-Red-GS.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1614886339" class="d-block w-100" alt="..."/>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>First slide label</h5>
-        <p>Some representative placeholder content for the first slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="https://images.stockx.com/images/Nike-Dunk-High-Game-Royal.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1613038501" class="d-block w-100" alt="..."/>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Second slide label</h5>
-        <p>Some representative placeholder content for the second slide.</p>
-      </div>
-    </div>
-    <div class="carousel-item">
-      <img src="https://images.stockx.com/images/Nike-Dunk-Low-College-Navy-Grey-W-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1615920429" class="d-block w-100" alt="..."/>
-      <div class="carousel-caption d-none d-md-block">
-        <h5>Third slide label</h5>
-        <p>Some representative placeholder content for the third slide.</p>
-      </div>
-    </div>
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"  data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
-</div>
-                        </div>
-                    </div>
+                <Carousel>
+                    <Carousel.Item interval={3000}>
+                        <img
+                            className="mx-auto d-block w-50"
+                            src="https://images.stockx.com/images/Nike-Court-Borough-Low-2-Black-University-Red-GS.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1614886339"
+                            alt="First slide"
+                        />
+                        <Carousel.Caption>
+                            <h3>First slide label</h3>
+                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item interval={3000}>
+                        <img
+                            className="mx-auto d-block w-50"
+                            src="https://images.stockx.com/images/Nike-Dunk-High-Game-Royal.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1613038501"
+                            alt="Second slide"
+                        />
+                        <Carousel.Caption>
+                            <h3>Second slide label</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                    <Carousel.Item>
+                        <img
+                            className="mx-auto d-block w-50"
+                            src="https://images.stockx.com/images/adidas-Yeezy-500-Salt-Product.jpg?fit=fill&bg=FFFFFF&w=300&h=214&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1606320592"
+                            alt="Third slide"
+                        />
+                        <Carousel.Caption>
+                            <h3>Third slide label</h3>
+                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                        </Carousel.Caption>
+                    </Carousel.Item>
+                </Carousel>
+            </div>
+            <div>
+                <SneakerDisplay />
+            </div>
+        </div>
+
     );
+
+
 }
 
 export default HomePage;
