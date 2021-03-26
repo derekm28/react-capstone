@@ -6,7 +6,7 @@ function ApiRequest({ brand = 'adidas' }) {
     //const [res, setRes] = useState(null);
     useEffect(() => {
         axios.get(`https://api.thesneakerdatabase.com/v1/sneakers?limit=10&brand=${brand}`).then(res => {
-            setData(res.data.results[1].name)
+            setData(res.data.results[2].name)
         })
     }, [brand])
 
