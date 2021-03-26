@@ -57,7 +57,10 @@ function JordanPage(props){
                           <Card.Title>{s.title}</Card.Title>
                           <Card.Text>
                             {s.brand}
+                            {s.name}
+                            {s.shoe}
                             {s.colorway}
+                            ${s.retailPrice}
                           </Card.Text>
                         </Card.Body>
                       </Card>

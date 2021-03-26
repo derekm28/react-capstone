@@ -2,11 +2,12 @@ import React, { useState, useEffect } from 'react';
 //import Sneakercard from './Sneakercard';
 import axios from 'axios';
 import SneakerCardList from './SneakerCardList';
+import { Card, Button } from "react-bootstrap";
 
 
 
 function AdidasPage(){
-    const url = "https://api.thesneakerdatabase.com/v1/sneakers?limit=10&brand=adidas";
+    const url = "https://api.thesneakerdatabase.com/v1/sneakers?limit=100&brand=adidas";
 
     const [sneakers, setSneakers] = useState(null);
 
@@ -40,12 +41,44 @@ function AdidasPage(){
 
     }
 
+    function SneakerDisplay() {
+        return (
+          <div className="row justify-content-center ">
+            {sneakers
+              ? sneakers.map((s, idx) => (
+                  <Card
+                    key={s.id}
+                    className="mr-2"
+                    title={s.title}
+                    brand={s.brand}
+                    colorway={s.colorway}
+                    style={{ width: "18rem" }}
+                    shoe={s.shoe}
+                    name={s.name}>
+                    <Card.Body>
+                      <Card.Img variant="top" src={s.media.smallImageUrl} />
+                      <Card.Title>{s.title}</Card.Title>
+                      <Card.Text>
+                        {s.brand}
+                        {s.name}
+                        {s.shoe}
+                        {s.colorway}
+                        ${s.retailPrice}
+                      </Card.Text>
+                    </Card.Body>
+                  </Card>
+                ))
+              : null}
+          </div>
+        );
+      }
+
     return(
         <div className = 'FrontPage'>
             <h1 className = 'FrontPage-title'>Adidas Page</h1>
             <h2 className = 'FrontPage-title'>Displays SneakerCards for Adidas shoes</h2>
             <div>
-                {content}
+                <SneakerDisplay />
             </div>
         </div>
     );
