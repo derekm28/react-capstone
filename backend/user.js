@@ -16,7 +16,7 @@ const bcrypt = require("bcrypt");
 class User {
   /** authenticate user with username, password.
    *
-   * Returns { username, first_name, last_name, email, is_admin }
+   * Returns { username, first_name, last_name, email }
    *
    * Throws UnauthorizedError is user not found or wrong password.
    **/
@@ -29,7 +29,6 @@ class User {
                   first_name AS "firstName",
                   last_name AS "lastName",
                   email,
-                  is_admin AS "isAdmin"
            FROM users
            WHERE username = $1`,
         [username],
