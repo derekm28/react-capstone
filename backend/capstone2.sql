@@ -1,18 +1,18 @@
 \echo 'Delete and recreate jobly db?'
 \prompt 'Return for yes or control-C to cancel > ' foo
 
-DROP DATABASE jobly;
-CREATE DATABASE jobly;
-\connect jobly
+DROP DATABASE capstone2;
+CREATE DATABASE capstone2;
+\connect capstone2
 
-\i jobly-schema.sql
-\i jobly-seed.sql
+\i capstone2-schema.sql
+\i capstone2-seed.sql
 
-\echo 'Delete and recreate jobly_test db?'
+\echo 'Delete and recreate capstone2_test db?'
 \prompt 'Return for yes or control-C to cancel > ' foo
 
-DROP DATABASE jobly_test;
-CREATE DATABASE jobly_test;
-\connect jobly_test
+DROP DATABASE capstone2_test;
+CREATE DATABASE capstone2_test;
+\connect capstone2_test
 
 \i jobly-schema.sql

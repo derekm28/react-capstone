@@ -62,6 +62,7 @@ function JordanPage(props){
                             {s.colorway}
                             ${s.retailPrice}
                           </Card.Text>
+                          <Button variant="primary">Save</Button>
                         </Card.Body>
                       </Card>
                     ))

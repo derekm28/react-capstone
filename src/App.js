@@ -1,6 +1,6 @@
 import './App.css';
 import HomePage from './HomePage';
-import Navbar from './Navbar';
+import NavBar from './Navbar';
 import { BrowserRouter, Route } from 'react-router-dom'
 import ApiRequest from './Api';
 import SearchForm from './SearchForm';
@@ -18,7 +18,7 @@ function App() {
   return (
     <div className="App">
       <BrowserRouter>
-        <Navbar />
+        <NavBar />
         <Route exact path = '/'>
         <SearchForm />
         <HomePage />

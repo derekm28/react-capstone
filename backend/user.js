@@ -155,7 +155,7 @@ class User {
    *
    * Throws NotFoundError if not found.
    *
-   * WARNING: this function can set a new password or make a user an admin.
+   * WARNING: this function can set a new password.
    * Callers of this function must be certain they have validated inputs to this
    * or a serious security risks are opened.
    */
@@ -170,7 +170,6 @@ class User {
         {
           firstName: "first_name",
           lastName: "last_name",
-          isAdmin: "is_admin",
         });
     const usernameVarIdx = "$" + (values.length + 1);
 
@@ -205,20 +204,20 @@ class User {
     if (!user) throw new NotFoundError(`No user: ${username}`);
   }
 
-  /** Apply for job: update db, returns undefined.
+  /** Save a shoe: update db, returns undefined.
    *
-   * - username: username applying for job
-   * - jobId: job id
+   * - username: username saving shoe
+   * - sneakerId: sneaker id
    **/
 
-  static async applyToJob(username, jobId) {
+  static async saveAShoe(username, sneakerId) {
     const preCheck = await db.query(
           `SELECT id
-           FROM jobs
-           WHERE id = $1`, [jobId]);
-    const job = preCheck.rows[0];
+           FROM sneakers
+           WHERE id = $1`, [sneakerId]);
+    const sneaker = preCheck.rows[0];
 
-    if (!job) throw new NotFoundError(`No job: ${jobId}`);
+    if (!sneaker) throw new NotFoundError(`No Sneaker: ${sneakerId}`);
 
     const preCheck2 = await db.query(
           `SELECT username
