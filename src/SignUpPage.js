@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useHistory } from "react-router-dom";
 import Alert from "./Alert";
 
@@ -39,26 +39,28 @@ function SignUpPage({ signup }) {
      * Calls login function prop and, if successful, redirect to /homepage.
      */
 
-    async function handleSubmit(evt) {
-        evt.preventDefault();
-        let result = SignUpPage(formData);
-        if (result.success) {
-            history.push('./');
+    //useEffect(() => {
+        const handleSubmit = (evt) => {
+            evt.preventDefault();
+            let result = SignUpPage(formData);
+            if (result.success) {
+                history.push('./');
+            }
+            else {
+                setFormErrors(result.errors);
+            }
         }
-        else {
-            setFormErrors(result.errors);
-        }
-    }
+    //});
 
     /**update form data field*/
 
     function handleChange(evt) {
-        const { name, value } = evt.target;
-        setFormData(data => ({
-            ...data,
-            [name]: value
-        }));
-    };
+            const { name, value } = evt.target;
+            setFormData(data => ({
+                ...data,
+                [name]: value
+            }));
+        };
     return (
         <div className="SignupPage">
             <div className='container col-md-6 offset-md-3 col-lg-4 offset-lg-4'>
@@ -97,41 +99,41 @@ function SignUpPage({ signup }) {
                                 />
                             </div>
 
-                                        <div className='form-group'>
-                                            <label>Last name</label>
-                                            <input
-                                                name='lastName'
-                                                className='form-control'
-                                                value={formData.lastName}
-                                                onChange={handleChange}
-                                            />
-                                        </div>
+                            <div className='form-group'>
+                                <label>Last name</label>
+                                <input
+                                    name='lastName'
+                                    className='form-control'
+                                    value={formData.lastName}
+                                    onChange={handleChange}
+                                />
+                            </div>
 
-                                        <div className='form-group'>
-                                            <label>Email</label>
-                                            <input
-                                                type='email'
-                                                name='email'
-                                                className='form-control'
-                                                value={formData.email}
-                                                onChange={handleChange}
-                                            />
-                                        </div>
+                            <div className='form-group'>
+                                <label>Email</label>
+                                <input
+                                    type='email'
+                                    name='email'
+                                    className='form-control'
+                                    value={formData.email}
+                                    onChange={handleChange}
+                                />
+                            </div>
 
-                                        {formErrors.length
-                                            ? <Alert type='danger' messages={formErrors} />
-                                            : null
-                                        }
+                            {formErrors.length
+                                ? <Alert type='danger' messages={formErrors} />
+                                : null
+                            }
 
-                                        <button
-                                            type='submit'
-                                            className='btn btn-primary float-right'
-                                            onSubmit={handleSubmit}>Submit</button>
+                            <button
+                                type='submit'
+                                className='btn btn-primary float-right'
+                                onSubmit={handleSubmit}>Submit</button>
                         </form>
-                                </div>
+                    </div>
                 </div>
             </div>
-                    </div>
+        </div>
     );
 }
 
