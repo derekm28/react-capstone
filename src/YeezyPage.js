@@ -11,35 +11,11 @@ function YeezyPage(){
 
     const [sneakers, setSneakers] = useState(null);
 
-    let content = null;
-
     useEffect(() => {
         axios.get(url).then(res => {
             setSneakers(res.data.results)
         });
     }, [url])
-
-    if(sneakers){
-        content =
-        <div>
-            <div>
-                <h1>{sneakers[2].brand}</h1>
-            </div>
-            <div>
-                <h1>{sneakers[2].name}</h1>
-            </div>
-            <div>
-                <h1>{sneakers[2].retailPrice}</h1>
-            </div>
-            <div>
-                <img src={sneakers[2].media.smallImageUrl}/>
-            </div>
-            <div>
-            <SneakerCardList sneakers={sneakers} />
-        </div>
-        </div>
-
-    }
 
     function SneakerDisplay() {
         return (
