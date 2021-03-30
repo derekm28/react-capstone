@@ -9,7 +9,7 @@ const bcrypt = require("bcrypt");
 //   UnauthorizedError,
 // } = require("../expressError");
 
-//const { BCRYPT_WORK_FACTOR } = require("../config.js");
+const { BCRYPT_WORK_FACTOR } = require("./config.js");
 
 /** Related functions for users. */
 
