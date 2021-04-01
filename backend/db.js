@@ -3,17 +3,16 @@
 /** Database setup for jobly. */
 
 const { Client } = require("pg");
-const { getDatabaseUri } = require("./config");
-const DB_URI;
+const { DB_URI } = require("./config");
 
-if (process.env.NODE_ENV === "test") {
-  DB_URI = "postgresql:///users_test";
-} else {
-  DB_URI = "postgresql:///users";
-}
+// if (process.env.NODE_ENV === "test") {
+//   DB_URI = "postgresql:///users_test";
+// } else {
+//   DB_URI = "postgresql:///users";
+// }
 
 const db = new Client({
-  connectionString: getDatabaseUri(),
+  connectionString: DB_URI()
 });
 
 db.connect();

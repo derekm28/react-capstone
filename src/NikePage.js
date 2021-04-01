@@ -25,11 +25,11 @@ function NikePage(sneakerId) {
     }
 
     /**Save sneaker to profile */
-    async function handleSave(evt) {
-        if (hasSavedSneaker(sneakerId)) return;
-        saveSneaker(sneakerId);
-        setSaved(true);
-    }
+    // async function handleSave(evt) {
+    //     if (hasSavedSneaker(sneakerId)) return;
+    //     saveSneaker(sneakerId);
+    //     setSaved(true);
+    // }
 
     // return(
     //     <div className='SneakerCard card'> {saved}
@@ -50,7 +50,7 @@ function NikePage(sneakerId) {
 
     useEffect(() => {
         axios.get(url).then(res => {
-            setSneakers(res.data.results[Math.floor(Math.random() * 100)])
+            setSneakers(res.data.results)
         });
     }, [url])
 
@@ -78,8 +78,8 @@ function NikePage(sneakerId) {
                                     {s.colorway}
                         ${s.retailPrice}
                                 </Card.Text>
-                                <Button variant="primary" className='btn btn-danger font-weight-bold text-uppercase float-right'
-                                    onClick={handleSave}
+                                <Button variant="primary" className='btn btn-danger font-weight-bold text-uppercase'
+                                    //onClick={handleSave}
                                     disabled={saved}>
                                     {saved ? 'Saved' : 'Save'}</Button>
                             </Card.Body>

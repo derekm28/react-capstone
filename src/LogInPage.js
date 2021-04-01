@@ -38,13 +38,13 @@ function LogIn({ logIn }){
 
     async function handleSubmit(evt){
         evt.preventDefault();
-        let result = await logIn(formData);
-        if (result.success){
-            history.push('/');
-        }
-        else{
-            setFormErrors(result.errors);
-        }
+        // let result = await logIn(formData);
+        // if (result.success){
+        //     history.push('/');
+        // }
+        // else{
+        //     setFormErrors(result.errors);
+        // }
     }
 
     /**update form data field */

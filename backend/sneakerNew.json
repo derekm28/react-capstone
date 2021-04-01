@@ -1,0 +1,111 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "http://sneaker.com/newSneaker.schema.json",
+    "type": "object",
+    "title": "The root schema",
+    "description": "The root schema comprises the entire JSON document.",
+    "default": {},
+    "required": [
+        "id",
+        "brand",
+        "colorway",
+        "gender",
+        "name",
+        "releaseDate",
+        "retailPrice",
+        "shoe",
+        "styleId",
+        "title",
+        "year",
+        "media"
+    ],
+    "properties": {
+        "id": {
+            "$id": "#/properties/id",
+            "type": "string",
+            "default": ""
+        },
+        "brand": {
+            "$id": "#/properties/brand",
+            "type": "string",
+            "default": "",
+            "examples": [
+                "adidas"
+            ]
+        },
+        "colorway": {
+            "$id": "#/properties/colorway",
+            "type": "string",
+            "default": ""
+        },
+        "gender": {
+            "$id": "#/properties/gender",
+            "type": "string",
+            "default": ""
+        },
+        "name": {
+            "$id": "#/properties/name",
+            "type": "string",
+            "default": ""
+        },
+        "releaseDate": {
+            "$id": "#/properties/releaseDate",
+            "type": "string",
+            "default": ""
+        },
+        "retailPrice": {
+            "$id": "#/properties/retailPrice",
+            "type": "integer",
+            "default": 0
+        },
+        "shoe": {
+            "$id": "#/properties/shoe",
+            "type": "string",
+            "default": ""
+        },
+        "styleId": {
+            "$id": "#/properties/styleId",
+            "type": "string",
+            "default": ""
+        },
+        "title": {
+            "$id": "#/properties/title",
+            "type": "string",
+            "default": ""
+        },
+        "year": {
+            "$id": "#/properties/year",
+            "type": "integer",
+            "default": 0
+        },
+        "media": {
+            "$id": "#/properties/media",
+            "type": "object",
+            "default": {},
+            "required": [
+                "imageUrl",
+                "smallImageUrl",
+                "thumbUrl"
+            ],
+            "properties": {
+                "imageUrl": {
+                    "$id": "#/properties/media/properties/imageUrl",
+                    "type": "string",
+                    "default": ""
+                },
+                "smallImageUrl": {
+                    "$id": "#/properties/media/properties/smallImageUrl",
+                    "type": "string",
+                    "default": ""
+                },
+                "thumbUrl": {
+                    "$id": "#/properties/media/properties/thumbUrl",
+                    "type": "string",
+                    "default": ""
+                }
+            },
+            "additionalProperties": true
+        }
+    },
+    "additionalProperties": true
+}

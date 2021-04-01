@@ -26,6 +26,8 @@ function SignUpPage({ signup }) {
     });
 
     const [formErrors, setFormErrors] = useState([]);
+    const [submitted, setSubmitted] = useState(false);
+    const [valid, setValid] = useState(false);
 
     console.debug(
         'SignupForm',
@@ -42,13 +44,23 @@ function SignUpPage({ signup }) {
     //useEffect(() => {
         const handleSubmit = (evt) => {
             evt.preventDefault();
-            let result = SignUpPage(formData);
-            if (result.success) {
-                history.push('./');
+            //setSubmitted(true);
+            if(formData.username
+                && formData.firstName
+                && formData.lastName
+                && formData.password
+                && formData.email){
+                setValid(true);
             }
-            else {
-                setFormErrors(result.errors);
-            }
+            setSubmitted(true);
+            //setFormData("");
+            // let result = await signup(formData);
+            // if (result.success) {
+            //     history.push('./');
+            // }
+            // else {
+            //     setFormErrors(result.errors);
+            // }
         }
     //});
 
@@ -67,7 +79,8 @@ function SignUpPage({ signup }) {
                 <h2 className='mb-3'>Sign Up</h2>
                 <div className='card'>
                     <div className='card-body'>
-                        <form onSubmit={handleSubmit}>
+                        <form class="register-form" onSubmit={handleSubmit}>
+                        {submitted && valid ? <div className='alert alert-success'>Thank you for registering!</div> : null}
                             <div className='form-group'>
                                 <label>Username</label>
                                 <input
@@ -76,6 +89,7 @@ function SignUpPage({ signup }) {
                                     value={formData.username}
                                     onChange={handleChange}
                                 />
+                                {submitted && !formData.username ? <span id="username-error">Please enter a username</span> : null}
                             </div>
 
                             <div className='form-group'>
@@ -87,6 +101,7 @@ function SignUpPage({ signup }) {
                                     value={formData.password}
                                     onChange={handleChange}
                                 />
+                                {submitted && !formData.password ? <span id="password-error">Please enter a password</span> : null}
                             </div>
 
                             <div className='form-group'>
@@ -97,6 +112,7 @@ function SignUpPage({ signup }) {
                                     value={formData.firstName}
                                     onChange={handleChange}
                                 />
+                                {submitted && !formData.firstName ? <span id="first-name-error">Please enter a first name</span> : null}
                             </div>
 
                             <div className='form-group'>
@@ -107,6 +123,7 @@ function SignUpPage({ signup }) {
                                     value={formData.lastName}
                                     onChange={handleChange}
                                 />
+                                {submitted && !formData.lastName ? <span id="last-name-error">Please enter a last name</span> : null}
                             </div>
 
                             <div className='form-group'>
@@ -118,6 +135,7 @@ function SignUpPage({ signup }) {
                                     value={formData.email}
                                     onChange={handleChange}
                                 />
+                                {submitted && !formData.email ? <span id="email-error">Please enter an email address</span> : null}
                             </div>
 
                             {formErrors.length
