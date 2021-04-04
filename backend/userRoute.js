@@ -5,12 +5,12 @@
 const jsonschema = require("jsonschema");
 
 const express = require("express");
-const { ensureCorrectUserOrAdmin, ensureAdmin } = require("../middleware/auth");
-const { BadRequestError } = require("../expressError");
+const { ensureCorrectUser } = require("./authMiddleware");
+const { BadRequestError } = require("./expressError");
 const User = require("./user");
-const { createToken } = require("../helpers/tokens");
-const userNewSchema = require("../schemas/userNew.json");
-const userUpdateSchema = require("../schemas/userUpdate.json");
+const { createToken } = require("./tokens");
+const userRegisterSchema = require("./userRegister.json");
+//const userUpdateSchema = require("../schemas/userUpdate.json");
 
 const router = express.Router();
 
@@ -27,9 +27,9 @@ const router = express.Router();
  * Authorization required: admin
  **/
 
-router.post("/", ensureAdmin, async function (req, res, next) {
+router.post("/", async function (req, res, next) {
   try {
-    const validator = jsonschema.validate(req.body, userNewSchema);
+    const validator = jsonschema.validate(req.body, userRegisterSchema);
     if (!validator.valid) {
       const errs = validator.errors.map(e => e.stack);
       throw new BadRequestError(errs);
@@ -51,7 +51,7 @@ router.post("/", ensureAdmin, async function (req, res, next) {
  * Authorization required: admin
  **/
 
-router.get("/", ensureAdmin, async function (req, res, next) {
+router.get("/", async function (req, res, next) {
   try {
     const users = await User.findAll();
     return res.json({ users });
@@ -69,7 +69,7 @@ router.get("/", ensureAdmin, async function (req, res, next) {
  * Authorization required: admin or same user-as-:username
  **/
 
-router.get("/:username", ensureCorrectUserOrAdmin, async function (req, res, next) {
+router.get("/:username", ensureCorrectUser, async function (req, res, next) {
   try {
     const user = await User.get(req.params.username);
     return res.json({ user });
@@ -84,12 +84,11 @@ router.get("/:username", ensureCorrectUserOrAdmin, async function (req, res, nex
  * Data can include:
  *   { firstName, lastName, password, email }
  *
- * Returns { username, firstName, lastName, email, isAdmin }
+ * Returns { username, firstName, lastName, email }
  *
- * Authorization required: admin or same-user-as-:username
  **/
 
-router.patch("/:username", ensureCorrectUserOrAdmin, async function (req, res, next) {
+router.patch("/:username", ensureCorrectUser, async function (req, res, next) {
   try {
     const validator = jsonschema.validate(req.body, userUpdateSchema);
     if (!validator.valid) {
@@ -110,7 +109,7 @@ router.patch("/:username", ensureCorrectUserOrAdmin, async function (req, res, n
  * Authorization required: admin or same-user-as-:username
  **/
 
-router.delete("/:username", ensureCorrectUserOrAdmin, async function (req, res, next) {
+router.delete("/:username", ensureCorrectUser, async function (req, res, next) {
   try {
     await User.remove(req.params.username);
     return res.json({ deleted: req.params.username });
@@ -120,17 +119,16 @@ router.delete("/:username", ensureCorrectUserOrAdmin, async function (req, res, 
 });
 
 
-/** POST /[username]/jobs/[id]  { state } => { application }
+/** POST /[username]/sneakers/[id]  { state } => { application }
  *
- * Returns {"applied": jobId}
+ * Returns {"Saved": sneakerId}
  *
- * Authorization required: admin or same-user-as-:username
  * */
 
-router.post("/:username/jobs/:id", ensureCorrectUserOrAdmin, async function (req, res, next) {
+router.post("/:username/sneakers/:id", ensureCorrectUser, async function (req, res, next) {
   try {
     const jobId = +req.params.id;
-    await User.applyToJob(req.params.username, jobId);
+    await User.saveAShoe(req.params.username, jobId);
     return res.json({ applied: jobId });
   } catch (err) {
     return next(err);
