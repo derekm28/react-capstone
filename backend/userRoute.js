@@ -15,35 +15,6 @@ const userRegisterSchema = require("./userRegister.json");
 const router = express.Router();
 
 
-/** POST / { user }  => { user, token }
- *
- * Adds a new user. This is not the registration endpoint --- instead, this is
- * only for admin users to add new users. The new user being added can be an
- * admin.
- *
- * This returns the newly created user and an authentication token for them:
- *  {user: { username, firstName, lastName, email, isAdmin }, token }
- *
- * Authorization required: admin
- **/
-
-router.post("/", async function (req, res, next) {
-  try {
-    const validator = jsonschema.validate(req.body, userRegisterSchema);
-    if (!validator.valid) {
-      const errs = validator.errors.map(e => e.stack);
-      throw new BadRequestError(errs);
-    }
-
-    const user = await User.register(req.body);
-    const token = createToken(user);
-    return res.status(201).json({ user, token });
-  } catch (err) {
-    return next(err);
-  }
-});
-
-
 /** GET / => { users: [ {username, firstName, lastName, email }, ... ] }
  *
  * Returns list of all users.
@@ -52,6 +23,7 @@ router.post("/", async function (req, res, next) {
  **/
 
 router.get("/", async function (req, res, next) {
+    res.send('APP IS WORKING!!')
   try {
     const users = await User.findAll();
     return res.json({ users });
@@ -63,10 +35,10 @@ router.get("/", async function (req, res, next) {
 
 /** GET /[username] => { user }
  *
- * Returns { username, firstName, lastName, isAdmin, jobs }
+ * Returns { username, firstName, lastName, email }
  *   where jobs is { id, title, companyHandle, companyName, state }
  *
- * Authorization required: admin or same user-as-:username
+ * Authorization required: same user-as-:username
  **/
 
 router.get("/:username", ensureCorrectUser, async function (req, res, next) {
