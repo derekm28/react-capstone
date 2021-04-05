@@ -33,11 +33,12 @@ function JordanPage(props){
                           <Card.Img variant="top" src={s.media.smallImageUrl} />
                           <Card.Title>{s.title}</Card.Title>
                           <Card.Text>
-                            {s.brand}
-                            {s.name}
-                            {s.shoe}
-                            {s.colorway}
-                            ${s.retailPrice}
+                                    <div>{s.brand}</div>
+                                    <div>{s.name}</div>
+                                    <div>{s.shoe}</div>
+                                    <div>{s.colorway}</div>
+                                    <div>Release Date: {s.releaseDate}</div>
+                                    <div>Price: ${s.retailPrice}</div>
                           </Card.Text>
                           <Button variant="primary">Save</Button>
                         </Card.Body>

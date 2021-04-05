@@ -77,7 +77,7 @@ class User {
             first_name,
             last_name,
             email)
-           VALUES ($1, $2, $3, $4, $5, $6)
+           VALUES ($1, $2, $3, $4, $5)
            RETURNING username, first_name AS "firstName", last_name AS "lastName", email`,
         [
           username,
@@ -124,7 +124,7 @@ class User {
           `SELECT username,
                   first_name AS "firstName",
                   last_name AS "lastName",
-                  email,
+                  email
            FROM users
            WHERE username = $1`,
         [username],
@@ -134,12 +134,12 @@ class User {
 
     if (!user) throw new NotFoundError(`No user: ${username}`);
 
-    const userApplicationsRes = await db.query(
-          `SELECT a.sneaker_id
-           FROM sneakers AS a
-           WHERE a.username = $1`, [username]);
+    // const savedSneakerRes = await db.query(
+    //       `SELECT s.sneaker_id
+    //        FROM sneakers AS a
+    //        WHERE s.username = $1`, [username]);
 
-    user.applications = userApplicationsRes.rows.map(a => a.sneaker_id);
+    // user.sneaker = savedSneakerRes.rows.map(a => a.sneaker_id);
     return user;
   }
 

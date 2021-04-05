@@ -44,7 +44,6 @@ function SignUpPage({ signup }) {
     //useEffect(() => {
         const handleSubmit = (evt) => {
             evt.preventDefault();
-            //setSubmitted(true);
             if(formData.username
                 && formData.firstName
                 && formData.lastName
@@ -53,6 +52,13 @@ function SignUpPage({ signup }) {
                 setValid(true);
             }
             setSubmitted(true);
+            const res = fetch("http://localhost:3001/auth/register", {
+                method: "POST",
+                headers: { "Content-type": "application/json" },
+                body: JSON.stringify(formData)
+            });
+            console.log(res);
+            history.push('./');
             //setFormData("");
             // let result = await signup(formData);
             // if (result.success) {

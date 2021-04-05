@@ -21,6 +21,8 @@ app.use(express.json());
 app.use(morgan("tiny"));
 app.use(authenticateJWT);
 
+//a prefix for all related routes
+//auth/register or users/username
 app.use("/auth", authRoutes);
 app.use("/users", usersRoutes);
 app.use("/sneaker", sneakerRoutes);

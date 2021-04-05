@@ -23,7 +23,7 @@ const router = express.Router();
  **/
 
 router.get("/", async function (req, res, next) {
-    res.send('APP IS WORKING!!')
+    //res.send('APP IS WORKING!!')
   try {
     const users = await User.findAll();
     return res.json({ users });
@@ -36,12 +36,11 @@ router.get("/", async function (req, res, next) {
 /** GET /[username] => { user }
  *
  * Returns { username, firstName, lastName, email }
- *   where jobs is { id, title, companyHandle, companyName, state }
  *
  * Authorization required: same user-as-:username
  **/
 
-router.get("/:username", ensureCorrectUser, async function (req, res, next) {
+router.get("/:username", async function (req, res, next) {
   try {
     const user = await User.get(req.params.username);
     return res.json({ user });
@@ -78,7 +77,7 @@ router.patch("/:username", ensureCorrectUser, async function (req, res, next) {
 
 /** DELETE /[username]  =>  { deleted: username }
  *
- * Authorization required: admin or same-user-as-:username
+ * Authorization required: same-user-as-:username
  **/
 
 router.delete("/:username", ensureCorrectUser, async function (req, res, next) {
