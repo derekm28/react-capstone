@@ -23,7 +23,6 @@ const router = express.Router();
  **/
 
 router.get("/", async function (req, res, next) {
-    //res.send('APP IS WORKING!!')
   try {
     const users = await User.findAll();
     return res.json({ users });

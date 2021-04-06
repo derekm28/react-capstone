@@ -59,16 +59,7 @@ function SignUpPage({ signup }) {
             });
             console.log(res);
             history.push('./');
-            //setFormData("");
-            // let result = await signup(formData);
-            // if (result.success) {
-            //     history.push('./');
-            // }
-            // else {
-            //     setFormErrors(result.errors);
-            // }
         }
-    //});
 
     /**update form data field*/
 

@@ -66,7 +66,7 @@ function NavBar ({ logout }){
     return (
         <nav className = 'NavBar navbar navbar-expand-md'>
             <Link className = 'navbar-brand' to = '/'>
-                Name of App
+                Heat
             </Link>
             {currentUser ? loggedInNav() : loggedOutNav()}
         </nav>

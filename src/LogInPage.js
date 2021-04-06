@@ -22,6 +22,8 @@ function LogIn({ logIn }){
         password: '',
     });
     const [formErrors, setFormErrors] = useState([]);
+    const [submitted, setSubmitted] = useState(false);
+    const [valid, setValid] = useState(false);
 
     console.debug(
         'LogInPage',
@@ -38,13 +40,18 @@ function LogIn({ logIn }){
 
     async function handleSubmit(evt){
         evt.preventDefault();
-        // let result = await logIn(formData);
-        // if (result.success){
-        //     history.push('/');
-        // }
-        // else{
-        //     setFormErrors(result.errors);
-        // }
+        if(formData.username
+            && formData.password){
+            setValid(true);
+        }
+        setSubmitted(true);
+        const res = fetch("http://localhost:3001/auth/token", {
+            method: "POST",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify(formData)
+        });
+        console.log(res);
+        history.push('./');
     }
 
     /**update form data field */
@@ -59,7 +66,7 @@ function LogIn({ logIn }){
                 <h3 className='mb-3'>Log In</h3>
                 <div className='card'>
                     <div className='card-body'>
-                        <form onSubmit={handleSubmit}>
+                        <form class="login-form" onSubmit={handleSubmit}>
                             <div className='form-group'>
                                 <label >Username</label>
                                 <input
@@ -70,6 +77,7 @@ function LogIn({ logIn }){
                                     autoComplete='username'
                                     required
                                 />
+                                {submitted && !formData.username ? <span id="username-error">Please enter a username</span> : null}
                             </div>
                             <div className='form-group'>
                                 <label>Password</label>
@@ -82,6 +90,7 @@ function LogIn({ logIn }){
                                     autoComplete='current-password'
                                     required
                                 />
+                                {submitted && !formData.password ? <span id="password-error">Please enter a password</span> : null}
                             </div>
                             {formErrors.length
                                 ? <Alert type='danger' messages={formErrors} />
