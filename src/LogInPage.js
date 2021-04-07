@@ -1,3 +1,4 @@
+import { token } from 'morgan';
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Alert from './Alert';
@@ -19,11 +20,12 @@ function LogIn({ logIn }){
     const history = useHistory();
     const [formData, setFormData] = useState({
         username: '',
-        password: '',
+        password: ''
     });
     const [formErrors, setFormErrors] = useState([]);
     const [submitted, setSubmitted] = useState(false);
     const [valid, setValid] = useState(false);
+    const [token, setToken] = useState(false);
 
     console.debug(
         'LogInPage',
@@ -50,8 +52,14 @@ function LogIn({ logIn }){
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(formData)
         });
-        console.log(res);
-        history.push('./');
+        return res;
+        // {(formData.username && formData.password === token) ? setToken(true) : null}
+        // console.log(res);
+        //CREATE IF STATEMENT FOR AUTH TO BE REDIRECTED TO HOME PAGE
+        // if(formData.username && formData.password !== token){
+        //     throw "Incorrect username/password";
+        // }
+        //history.push('./');
     }
 
     /**update form data field */
@@ -66,16 +74,18 @@ function LogIn({ logIn }){
                 <h3 className='mb-3'>Log In</h3>
                 <div className='card'>
                     <div className='card-body'>
-                        <form class="login-form" onSubmit={handleSubmit}>
+                        <form className="login-form" onSubmit={handleSubmit}>
+                        {/* {setToken(false) ? <span id="login-error">Incorrect username/password</span> : null} */}
                             <div className='form-group'>
                                 <label >Username</label>
                                 <input
+                                    type='username'
                                     name='username'
                                     className='form-control'
                                     value={formData.username}
                                     onChange={handleChange}
-                                    autoComplete='username'
-                                    required
+                                    // autoComplete='username'
+                                    // required
                                 />
                                 {submitted && !formData.username ? <span id="username-error">Please enter a username</span> : null}
                             </div>
@@ -87,8 +97,9 @@ function LogIn({ logIn }){
                                     className='form-control'
                                     value={formData.password}
                                     onChange={handleChange}
-                                    autoComplete='current-password'
-                                    required
+                                    // autoComplete='current-password'
+                                    // required
+
                                 />
                                 {submitted && !formData.password ? <span id="password-error">Please enter a password</span> : null}
                             </div>

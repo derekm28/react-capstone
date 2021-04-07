@@ -49,9 +49,12 @@ function NikePage(sneakerId) {
     // );
 
     useEffect(() => {
+        async function getSneakers(){
         axios.get(url).then(res => {
-            setSneakers(res.data.results)
+            setSneakers(res.data.results);
         });
+    }
+    getSneakers();
     }, [url])
 
     function SneakerDisplay() {
@@ -72,9 +75,6 @@ function NikePage(sneakerId) {
                                 <Card.Img variant="top" src={s.media.smallImageUrl} />
                                 <Card.Title>{s.title}</Card.Title>
                                 <Card.Text>
-                                    <div>{s.brand}</div>
-
-                                    <div>{s.shoe}</div>
                                     <div>{s.colorway}</div>
                                     <div>Release Date: {s.releaseDate}</div>
                                     <div>Price: ${s.retailPrice}</div>
