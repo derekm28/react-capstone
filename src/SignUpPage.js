@@ -76,7 +76,7 @@ function SignUpPage({ signup }) {
                 <h2 className='mb-3'>Sign Up</h2>
                 <div className='card'>
                     <div className='card-body'>
-                        <form class="register-form" onSubmit={handleSubmit}>
+                        <form action="users/register" method="POST" class="register-form" onSubmit={handleSubmit}>
                         {submitted && valid ? <div className='alert alert-success'>Thank you for registering!</div> : null}
                             <div className='form-group'>
                                 <label>Username</label>
@@ -144,6 +144,7 @@ function SignUpPage({ signup }) {
                                 type='submit'
                                 className='btn btn-primary float-right'
                                 onSubmit={handleSubmit}>Submit</button>
+                            <a href="users/token">Already Registered? Log in here.</a>
                         </form>
                     </div>
                 </div>

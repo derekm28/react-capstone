@@ -57,7 +57,7 @@ function HomePage(props) {
                     <Carousel.Item interval={3000}>
                         <img
                             className="mx-auto d-block w-50"
-                            src="https://images.stockx.com/images/Nike-Court-Borough-Low-2-Black-University-Red-GS.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1614886339"
+                            src="https://images.stockx.com/images/Nike-Lebron-7-Los-Angeles-Dodgers.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1613645246"
                             alt="First slide"
                         />
                         <Carousel.Caption>
@@ -68,7 +68,7 @@ function HomePage(props) {
                     <Carousel.Item interval={3000}>
                         <img
                             className="mx-auto d-block w-50"
-                            src="https://images.stockx.com/images/Nike-Dunk-High-Game-Royal.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1613038501"
+                            src="https://images.stockx.com/images/Air-Jordan-4-Retro-White-Oreo-2021-GS.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1614141824"
                             alt="Second slide"
                         />
                         <Carousel.Caption>
@@ -79,7 +79,7 @@ function HomePage(props) {
                     <Carousel.Item>
                         <img
                             className="mx-auto d-block w-50"
-                            src="https://images.stockx.com/images/adidas-Yeezy-500-Salt-Product.jpg?fit=fill&bg=FFFFFF&w=300&h=214&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1606320592"
+                            src="https://images.stockx.com/images/adidas-Yeezy-450-Cloud-White-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1615564111"
                             alt="Third slide"
                         />
                         <Carousel.Caption>

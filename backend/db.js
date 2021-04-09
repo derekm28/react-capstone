@@ -1,6 +1,6 @@
 "use strict";
 
-/** Database setup for jobly. */
+/** Database setup for capstone2. */
 
 const { Client } = require("pg");
 const { DB_URI } = require("./config");

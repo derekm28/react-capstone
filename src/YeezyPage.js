@@ -40,7 +40,7 @@ function YeezyPage(){
                       <Card.Text>
                                     <div>{s.colorway}</div>
                                     <div>Release Date: {s.releaseDate}</div>
-                                    <div>Price: ${s.retailPrice}</div>
+                                    <div>Retail Price: ${s.retailPrice}</div>
                       </Card.Text>
                       <Button variant="primary">Save</Button>
                     </Card.Body>

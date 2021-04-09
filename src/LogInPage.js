@@ -1,6 +1,6 @@
 import { token } from 'morgan';
 import React, { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { Redirect, useHistory } from 'react-router-dom';
 import Alert from './Alert';
 
 
@@ -52,14 +52,15 @@ function LogIn({ logIn }){
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(formData)
         });
-        return res;
+        //return res;
         // {(formData.username && formData.password === token) ? setToken(true) : null}
         // console.log(res);
         //CREATE IF STATEMENT FOR AUTH TO BE REDIRECTED TO HOME PAGE
         // if(formData.username && formData.password !== token){
         //     throw "Incorrect username/password";
         // }
-        //history.push('./');
+        console.log(res);
+        history.push('./');
     }
 
     /**update form data field */
@@ -74,7 +75,7 @@ function LogIn({ logIn }){
                 <h3 className='mb-3'>Log In</h3>
                 <div className='card'>
                     <div className='card-body'>
-                        <form className="login-form" onSubmit={handleSubmit}>
+                        <form action="users/token" method="POST" className="login-form" onSubmit={handleSubmit}>
                         {/* {setToken(false) ? <span id="login-error">Incorrect username/password</span> : null} */}
                             <div className='form-group'>
                                 <label >Username</label>

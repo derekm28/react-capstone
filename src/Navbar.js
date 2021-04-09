@@ -8,8 +8,8 @@ import FormControl from 'react-bootstrap/FormControl';
 import Button from 'react-bootstrap/Button';
 
 function NavBar ({ logout }){
-    const [isOpen, setIsOpen] = useState(false);
-    const toggle = () => setIsOpen(!isOpen);
+    // const [isOpen, setIsOpen] = useState(false);
+    // const toggle = () => setIsOpen(!isOpen);
 
     const currentUser = useContext(UserContext);
     console.debug('Navigation', 'currentUser=', currentUser);
