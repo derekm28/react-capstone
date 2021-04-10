@@ -1,16 +1,13 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import SneakerCard from './SneakerCard';
 import Carousel from 'react-bootstrap/Carousel'
-import { Card, Button } from "react-bootstrap";
+import { Card } from "react-bootstrap";
 
 function HomePage(props) {
 
     const url = "https://api.thesneakerdatabase.com/v1/sneakers?limit=100";
 
     const [sneakers, setSneakers] = useState(null);
-
-    let content = null;
 
     useEffect(() => {
         axios.get(url).then(res => {

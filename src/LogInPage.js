@@ -1,6 +1,6 @@
-import { token } from 'morgan';
+//import { token } from 'morgan';
 import React, { useState } from 'react';
-import { Redirect, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import Alert from './Alert';
 
 
@@ -16,7 +16,7 @@ import Alert from './Alert';
  * Routed as /login
  */
 
-function LogIn({ logIn }){
+function LogIn({ login }){
     const history = useHistory();
     const [formData, setFormData] = useState({
         username: '',
@@ -29,7 +29,7 @@ function LogIn({ logIn }){
 
     console.debug(
         'LogInPage',
-        'logIn=', typeof logIn,
+        'login=', typeof login,
         'formData=', formData,
         'formErrors', formErrors,
     );
@@ -42,23 +42,23 @@ function LogIn({ logIn }){
 
     async function handleSubmit(evt){
         evt.preventDefault();
-        if(formData.username
-            && formData.password){
-            setValid(true);
+        let result = await login(formData);
+        if (result.success){
+            history.push('/');
         }
-        setSubmitted(true);
+        else{
+            setFormErrors(result.errors);
+        }
+        // if(formData.username
+        //     && formData.password){
+        //     setValid(true);
+        // }
+        //setSubmitted(true);
         const res = fetch("http://localhost:3001/auth/token", {
             method: "POST",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(formData)
         });
-        //return res;
-        // {(formData.username && formData.password === token) ? setToken(true) : null}
-        // console.log(res);
-        //CREATE IF STATEMENT FOR AUTH TO BE REDIRECTED TO HOME PAGE
-        // if(formData.username && formData.password !== token){
-        //     throw "Incorrect username/password";
-        // }
         console.log(res);
         history.push('./');
     }

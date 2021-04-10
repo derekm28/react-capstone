@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import SneakerCard from './SneakerCard';
 import { Card, Button } from "react-bootstrap";
 
 

@@ -1,7 +1,5 @@
 import React, { useState, useEffect } from 'react';
-//import Sneakercard from './Sneakercard';
 import axios from 'axios';
-import SneakerCardList from './SneakerCardList';
 import { Card, Button } from "react-bootstrap";
 
 

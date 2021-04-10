@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from "react-router-dom";
 import Alert from "./Alert";
 
@@ -8,10 +8,9 @@ import Alert from "./Alert";
  * shows form and manages update to state on changes.
  * On submission:
  * - calls signup function prop
- * - redirect to /companies route
+ * - redirect to / route
  *
- * Routes ---> Signup form -->
- * Routed as /signup
+ *
  */
 
 
@@ -42,34 +41,41 @@ function SignUpPage({ signup }) {
      */
 
     //useEffect(() => {
-        const handleSubmit = (evt) => {
-            evt.preventDefault();
-            if(formData.username
-                && formData.firstName
-                && formData.lastName
-                && formData.password
-                && formData.email){
-                setValid(true);
-            }
-            setSubmitted(true);
-            const res = fetch("http://localhost:3001/auth/register", {
-                method: "POST",
-                headers: { "Content-type": "application/json" },
-                body: JSON.stringify(formData)
-            });
-            console.log(res);
-            history.push('./');
+    async function handleSubmit(evt) {
+        evt.preventDefault();
+        let result = await signup(formData);
+        if (result.success) {
+            history.push('/');
         }
+        else {
+            setFormErrors(result.errors);
+        }
+        // if(formData.username
+        //     && formData.firstName
+        //     && formData.lastName
+        //     && formData.password
+        //     && formData.email){
+        //     setValid(true);
+        // }
+        // setSubmitted(true);
+        const res = fetch("http://localhost:3001/auth/register", {
+            method: "POST",
+            headers: { "Content-type": "application/json" },
+            body: JSON.stringify(formData)
+        });
+        console.log(res);
+        history.push('./');
+    }
 
     /**update form data field*/
 
     function handleChange(evt) {
-            const { name, value } = evt.target;
-            setFormData(data => ({
-                ...data,
-                [name]: value
-            }));
-        };
+        const { name, value } = evt.target;
+        setFormData(data => ({
+            ...data,
+            [name]: value
+        }));
+    };
     return (
         <div className="SignupPage">
             <div className='container col-md-6 offset-md-3 col-lg-4 offset-lg-4'>
@@ -77,7 +83,7 @@ function SignUpPage({ signup }) {
                 <div className='card'>
                     <div className='card-body'>
                         <form action="users/register" method="POST" class="register-form" onSubmit={handleSubmit}>
-                        {submitted && valid ? <div className='alert alert-success'>Thank you for registering!</div> : null}
+                            {submitted && valid ? <div className='alert alert-success'>Thank you for registering!</div> : null}
                             <div className='form-group'>
                                 <label>Username</label>
                                 <input

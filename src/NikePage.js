@@ -1,8 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
 import axios from 'axios';
-//import ApiRequest from './Api';
-import SneakerCard from './SneakerCard';
-import SneakerCardList from './SneakerCardList';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Button } from "react-bootstrap";
 import UserContext from './UserContext';

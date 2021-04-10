@@ -1,5 +1,6 @@
 import React, { useState, useContext } from 'react';
 import UserContext from './UserContext';
+import Capstone2Api from './Api';
 import Alert from './Alert';
 
 //eslint-disable-next-line
@@ -19,7 +20,7 @@ import Alert from './Alert';
  */
 
 function ProfileForm (){
-    const { currentUser, setCurrentUser } =
+    const { currentUser, setCurrentUser }  =
     useContext(UserContext);
     const [formData, setFormData] = useState({
         firstName: currentUser.firstName,
@@ -66,7 +67,7 @@ function ProfileForm (){
         let updatedUser;
 
         try{
-            updatedUser = (username, profileData);
+            updatedUser = await Capstone2Api.saveProfile(username, profileData);
         }
         catch(errors){
             debugger;

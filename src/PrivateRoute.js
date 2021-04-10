@@ -9,7 +9,7 @@ import UserContext from './UserContext';
 */
 
 function PrivateRoute({ exact, path, children }){
-    const currentUser = useContext(UserContext);
+    const { currentUser } = useContext(UserContext);
 
     console.debug(
         'PrivateRoute',
