@@ -1,65 +1,71 @@
 import React, { useContext } from 'react';
 import { NavLink, Link } from 'react-router-dom';
 import UserContext from './UserContext';
+import Navbar from 'react-bootstrap/Navbar';
+import Nav from 'react-bootstrap/Nav';
+
 
 function NavBar ({ logout }){
-    const currentUser = useContext(UserContext);
+    const { currentUser } = useContext(UserContext);
     console.debug('Navigation', 'currentUser=', currentUser);
 
     function loggedInNav(){
         return (
-            <nav className = "Navbar">
-                <NavLink to = '/'>
+            <Navbar bg="primary" variant="dark">
+                <Navbar.Brand href='#/'>Heat</Navbar.Brand>
+                <Nav className="mr-auto">
+                <Nav.Link href='/'>
                     Home
-                </NavLink>
-                <NavLink to = '/nike'>
+                </Nav.Link>
+                <Nav.Link href="/nike">
                     Nike
-                </NavLink>
-                <NavLink to = '/jordan'>
+                </Nav.Link>
+                <Nav.Link href='/jordan'>
                     Jordan
-                </NavLink>
-                <NavLink to = '/yeezy'>
+                </Nav.Link>
+                <Nav.Link href='/yeezy'>
                     Yeezy
-                </NavLink>
-                <NavLink to = '/profile'>
+                </Nav.Link>
+                <Nav.Link href='/profile'>
                     Profile
-                </NavLink>
-                <Link className='nav-link' to='/' onClick={logout}>
+                </Nav.Link>
+                <Nav.Link href='/' onClick={logout}>
                         Log out {currentUser.first_name || currentUser.username}
-                    </Link>
-            </nav>
+                    </Nav.Link>
+                    </Nav>
+            </Navbar>
         );
     }
 
     function loggedOutNav(){
         return (
-            <nav className = "Navbar">
-                <NavLink to = '/'>
+            <Navbar bg="primary" variant="dark">
+                <Navbar.Brand href='/'>Heat</Navbar.Brand>
+                <Nav className="mr-auto">
+                <Nav.Link href='/'>
                     Home
-                </NavLink>
-                <NavLink to = '/nike'>
+                </Nav.Link>
+                <Nav.Link href='/nike'>
                     Nike
-                </NavLink>
-                <NavLink to = '/jordan'>
+                </Nav.Link>
+                <Nav.Link href='/jordan'>
                     Jordan
-                </NavLink>
-                <NavLink to = '/yeezy'>
+                </Nav.Link>
+                <Nav.Link href='/yeezy'>
                     Yeezy
-                </NavLink>
-                <NavLink to = '/signup'>
+                </Nav.Link>
+                <Nav.Link href='/signup'>
                     Sign Up
-                </NavLink>
-                <NavLink to = '/login'>
+                </Nav.Link>
+                <Nav.Link href='/login'>
                     Log In
-                </NavLink>
-            </nav>
+                </Nav.Link>
+                </Nav>
+            </Navbar>
         );
     }
     return (
         <nav className = 'NavBar navbar navbar-expand-md'>
-            <Link className = 'navbar-brand' to = '/'>
-                Heat
-            </Link>
             {currentUser ? loggedInNav() : loggedOutNav()}
         </nav>
     );

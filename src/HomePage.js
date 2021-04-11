@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel'
-import { Card } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 
 function HomePage(props) {
 
     const url = "https://api.thesneakerdatabase.com/v1/sneakers?limit=100";
 
     const [sneakers, setSneakers] = useState(null);
+    const [saved, setSaved] = useState();
 
     useEffect(() => {
         axios.get(url).then(res => {
@@ -33,11 +34,13 @@ function HomePage(props) {
                                 <Card.Img variant="top" src={s.media.smallImageUrl} />
                                 <Card.Title>{s.title}</Card.Title>
                                 <Card.Text>
-                                    {s.brand}
-                                    {s.name}
-                                    {s.shoe}
-                                    {s.colorway}
-                        ${s.retailPrice}
+                                    <div>{s.colorway}</div>
+                                    <div>Release Date: {s.releaseDate}</div>
+                                    <div>Retail Price: ${s.retailPrice}</div>
+                        <Button variant="primary" className='btn btn-danger font-weight-bold text-uppercase'
+                                    //onClick={handleSave}
+                                    disabled={saved}>
+                                    {saved ? 'Saved' : 'Save'}</Button>
                                 </Card.Text>
                             </Card.Body>
                         </Card>
@@ -58,8 +61,8 @@ function HomePage(props) {
                             alt="First slide"
                         />
                         <Carousel.Caption>
-                            <h3>First slide label</h3>
-                            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+                            <h3></h3>
+                            <p></p>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item interval={3000}>
@@ -69,8 +72,8 @@ function HomePage(props) {
                             alt="Second slide"
                         />
                         <Carousel.Caption>
-                            <h3>Second slide label</h3>
-                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            <h3></h3>
+                            <p></p>
                         </Carousel.Caption>
                     </Carousel.Item>
                     <Carousel.Item>
@@ -80,8 +83,8 @@ function HomePage(props) {
                             alt="Third slide"
                         />
                         <Carousel.Caption>
-                            <h3>Third slide label</h3>
-                            <p>Praesent commodo cursus magna, vel scelerisque nisl consectetur.</p>
+                            <h3></h3>
+                            <p></p>
                         </Carousel.Caption>
                     </Carousel.Item>
                 </Carousel>

@@ -119,18 +119,20 @@ function App() {
   if (!infoLoaded) return <LoadingSpinner />;
 
   return (
-    <BrowserRouter>
-      <UserContext.Provider value={{ currentUser, setCurrentUser, hasSavedSneaker, saveSneaker }}>
-        <div className="App">
-        <NavBar logout={logout} />
-        <Routes login={login} signup={signup} />
-          </div>
-      </UserContext.Provider>
-    </BrowserRouter >
+    <div className="App">
+      <BrowserRouter>
+        <UserContext.Provider value={{ currentUser, setCurrentUser, hasSavedSneaker, saveSneaker }}>
+
+          <NavBar logout={logout} />
+          <Routes login={login} signup={signup} />
+
+        </UserContext.Provider>
+      </BrowserRouter >
+    </div>
 
 
 
-    );
+  );
 
 }
 
