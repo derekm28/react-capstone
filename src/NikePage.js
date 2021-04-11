@@ -3,6 +3,8 @@ import axios from 'axios';
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Card, Button } from "react-bootstrap";
 import UserContext from './UserContext';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Container from 'react-bootstrap/Container';
 
 
 function NikePage(sneakerId) {
@@ -89,8 +91,11 @@ function NikePage(sneakerId) {
     }
     return (
         <div className='NikePage'>
-            <h1 className='NikePage-title'>Nike</h1>
-            <h2 className='NikePage-title'>Displays SneakerCards for Nike shoes</h2>
+            <Jumbotron fluid>
+                <Container>
+                    <h1>Nike</h1>
+                </Container>
+            </Jumbotron>
             <div className='NikePage-cards'>
                 <div>
                     <SneakerDisplay />

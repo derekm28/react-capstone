@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { Card, Button } from "react-bootstrap";
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Container from 'react-bootstrap/Container';
 
 
 function JordanPage(props){
@@ -50,8 +52,11 @@ function JordanPage(props){
 
     return(
         <div className = 'FrontPage'>
-            <h1 className = 'FrontPage-title'>Jordan</h1>
-            <h2 className = 'FrontPage-title'>Displays SneakerCards for Jordan shoes</h2>
+            <Jumbotron fluid>
+                <Container>
+                    <h1>Jordan</h1>
+                </Container>
+            </Jumbotron>
             <div>
                 <SneakerDisplay />
             </div>

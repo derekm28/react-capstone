@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Carousel from 'react-bootstrap/Carousel'
 import { Card, Button } from "react-bootstrap";
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Container from 'react-bootstrap/Container';
 
 function HomePage(props) {
 
@@ -37,10 +39,10 @@ function HomePage(props) {
                                     <div>{s.colorway}</div>
                                     <div>Release Date: {s.releaseDate}</div>
                                     <div>Retail Price: ${s.retailPrice}</div>
-                        <Button variant="primary" className='btn btn-danger font-weight-bold text-uppercase'
-                                    //onClick={handleSave}
-                                    disabled={saved}>
-                                    {saved ? 'Saved' : 'Save'}</Button>
+                                    <Button variant="primary" className='btn btn-danger font-weight-bold text-uppercase'
+                                        //onClick={handleSave}
+                                        disabled={saved}>
+                                        {saved ? 'Saved' : 'Save'}</Button>
                                 </Card.Text>
                             </Card.Body>
                         </Card>
@@ -51,7 +53,14 @@ function HomePage(props) {
     }
     return (
         <div className='HomePage'>
-            <h1 className='HomePage-title'>Home</h1>
+            <Jumbotron fluid>
+                <Container>
+                    <h1>Heat</h1>
+                    <p>
+                        The source for new heat dropping soon.
+                    </p>
+                </Container>
+            </Jumbotron>
             <div className='HomePage-cards'>
                 <Carousel>
                     <Carousel.Item interval={3000}>

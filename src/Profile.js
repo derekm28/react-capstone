@@ -2,6 +2,8 @@ import React, { useState, useContext } from 'react';
 import UserContext from './UserContext';
 import Capstone2Api from './Api';
 import Alert from './Alert';
+import Jumbotron from 'react-bootstrap/Jumbotron';
+import Container from 'react-bootstrap/Container';
 
 //eslint-disable-next-line
 //import useTimedMessage from './useTimedMessage';
@@ -94,7 +96,12 @@ function ProfileForm (){
 
     return(
         <div className = 'col-md-6 col-lg-4 offset-md-3 offset-lg-4'>
-            <h3>Profile</h3>
+           <Jumbotron fluid>
+                <Container>
+                    <h1>{formData.username}'s Profile</h1>
+                </Container>
+            </Jumbotron>
+
             <div className = 'card'>
                 <div className = 'card-body'>
                     <form>
