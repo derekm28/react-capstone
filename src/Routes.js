@@ -4,6 +4,8 @@ import LogIn from './LogInPage';
 import SignUpPage from './SignUpPage';
 import NikePage from './NikePage';
 import JordanPage from './JordanPage';
+import MensPage from './MensPage';
+import WomensPage from './WomensPage';
 import YeezyPage from './YeezyPage';
 import HomePage from './HomePage';
 import ProfileForm from './Profile';
@@ -48,6 +50,14 @@ function Routes({ login, signup }) {
 
                 <Route exact path='/yeezy'>
                     <YeezyPage />
+                </Route>
+
+                <Route exact path='/mens'>
+                    <MensPage />
+                </Route>
+
+                <Route exact path='/womens'>
+                    <WomensPage />
                 </Route>
 
                 <PrivateRoute exact path="/profile">

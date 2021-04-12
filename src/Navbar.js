@@ -26,6 +26,12 @@ function NavBar ({ logout }){
                 <Nav.Link href='/yeezy'>
                     Yeezy
                 </Nav.Link>
+                <Nav.Link href='/mens'>
+                    Men's
+                </Nav.Link>
+                <Nav.Link href='/womens'>
+                    Women's
+                </Nav.Link>
                 <Nav.Link href='/profile'>
                     Profile
                 </Nav.Link>
@@ -53,6 +59,12 @@ function NavBar ({ logout }){
                 </Nav.Link>
                 <Nav.Link href='/yeezy'>
                     Yeezy
+                </Nav.Link>
+                <Nav.Link href='/mens'>
+                    Men's
+                </Nav.Link>
+                <Nav.Link href='/womens'>
+                    Women's
                 </Nav.Link>
                 <Nav.Link href='/signup'>
                     Sign Up
