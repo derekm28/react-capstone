@@ -3,6 +3,9 @@ import axios from 'axios';
 import { Card, Button } from "react-bootstrap";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 function JordanPage(props){
@@ -54,7 +57,18 @@ function JordanPage(props){
         <div className = 'FrontPage'>
             <Jumbotron fluid>
                 <Container>
-                    <h1>Jordan</h1>
+                    <Row>
+                    {/* <h1>Jordan</h1> */}
+                    <Col xs={6} md={4}>
+
+                        </Col>
+                        <Col xs={6} md={4}>
+                            <Image src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRiXk6CyzttUmVpx8yJogl2EJQDbFV3R6uNKRgXttwWadjL53W-yaYbnpJXToh2fxfQIOc&usqp=CAU" roundedCircle thumbnail />
+                        </Col>
+                        {/* <Col xs={6} md={4}>
+                            <Image src="https://i1.wp.com/sportsfinding.com/wp-content/uploads/2020/02/nike-swoosh-wikipedia.jpg?fit=580%2C350&ssl=1" thumbnail />
+                        </Col> */}
+                    </Row>
                 </Container>
             </Jumbotron>
             <div>

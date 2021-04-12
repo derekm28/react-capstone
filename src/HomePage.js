@@ -39,10 +39,11 @@ function HomePage(props) {
                                     <div>{s.colorway}</div>
                                     <div>Release Date: {s.releaseDate}</div>
                                     <div>Retail Price: ${s.retailPrice}</div>
-                                    <Button variant="primary" className='btn btn-danger font-weight-bold text-uppercase'
+                                    {/* <Button variant="primary" className='btn btn-danger font-weight-bold text-uppercase'
                                         //onClick={handleSave}
                                         disabled={saved}>
-                                        {saved ? 'Saved' : 'Save'}</Button>
+                                        {saved ? 'Saved' : 'Save'}</Button> */}
+                                     <Button variant="primary">Save</Button>
                                 </Card.Text>
                             </Card.Body>
                         </Card>

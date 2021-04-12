@@ -5,6 +5,9 @@ import { Card, Button } from "react-bootstrap";
 import UserContext from './UserContext';
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
+import Image from 'react-bootstrap/Image';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 function NikePage(sneakerId) {
@@ -48,12 +51,12 @@ function NikePage(sneakerId) {
     // );
 
     useEffect(() => {
-        async function getSneakers(){
-        axios.get(url).then(res => {
-            setSneakers(res.data.results);
-        });
-    }
-    getSneakers();
+        async function getSneakers() {
+            axios.get(url).then(res => {
+                setSneakers(res.data.results);
+            });
+        }
+        getSneakers();
     }, [url])
 
     function SneakerDisplay() {
@@ -78,7 +81,7 @@ function NikePage(sneakerId) {
                                     <div>Release Date: {s.releaseDate}</div>
                                     <div>Retail Price: ${s.retailPrice}</div>
                                 </Card.Text>
-                                <Button variant="primary" className='btn btn-danger font-weight-bold text-uppercase'
+                                <Button variant="primary"
                                     //onClick={handleSave}
                                     disabled={saved}>
                                     {saved ? 'Saved' : 'Save'}</Button>
@@ -93,7 +96,19 @@ function NikePage(sneakerId) {
         <div className='NikePage'>
             <Jumbotron fluid>
                 <Container>
-                    <h1>Nike</h1>
+                    <Row>
+                    {/* <h1>Nike</h1> */}
+                        <Col xs={6} md={4}>
+
+                        </Col>
+                        <Col xs={6} md={4}>
+                            <Image src="https://i1.wp.com/sportsfinding.com/wp-content/uploads/2020/02/nike-swoosh-wikipedia.jpg?fit=580%2C350&ssl=1" roundedCircle thumbnail />
+                        </Col>
+                        {/* <Col xs={6} md={4}>
+                            <Image src="https://i1.wp.com/sportsfinding.com/wp-content/uploads/2020/02/nike-swoosh-wikipedia.jpg?fit=580%2C350&ssl=1" thumbnail />
+                        </Col> */}
+                    </Row>
+
                 </Container>
             </Jumbotron>
             <div className='NikePage-cards'>

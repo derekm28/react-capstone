@@ -150,7 +150,7 @@ function SignUpPage({ signup }) {
                                 type='submit'
                                 className='btn btn-primary float-right'
                                 onSubmit={handleSubmit}>Submit</button>
-                            <a href="users/token">Already Registered? Log in here.</a>
+                            <a href="/login">Already Registered? Log in here.</a>
                         </form>
                     </div>
                 </div>
