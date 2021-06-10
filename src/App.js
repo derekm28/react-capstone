@@ -9,6 +9,8 @@ import useLocalStorage from './useLocalStorage';
 import LoadingSpinner from './LoadingSpinner';
 import UserContext from './UserContext';
 import Routes from './Routes';
+import Button from 'react-bootstrap/Button';
+import ModalCard from './Modal';
 
 //Key name for storing token in localstorage for 'remember me' re login
 export const TOKEN_STORAGE_ID = 'capstone2-token';
@@ -33,6 +35,7 @@ function App() {
   const [sneakerIds, setSneakerIds] = useState(new Set([]));
   const [currentUser, setCurrentUser] = useState(null);
   const [token, setToken] = useLocalStorage(TOKEN_STORAGE_ID);
+  const [modalShow, setModalShow] = React.useState(false);
 
   console.debug(
     'App',

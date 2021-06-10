@@ -12,11 +12,32 @@ function HomePage(props) {
     const [sneakers, setSneakers] = useState(null);
     const [saved, setSaved] = useState();
 
-    useEffect(() => {
-        axios.get(url).then(res => {
+    // useEffect(() => {
+    //     axios.get(url).then(res => {
+    //         setSneakers(res.data.results)
+    //     });
+    // }, [url])
+
+    const home = {
+        method: 'GET',
+        url: 'https://v1-sneakers.p.rapidapi.com/v1/sneakers',
+        params: { limit: '100' },
+        headers: {
+          'x-rapidapi-key': 'd35e6f2cf6msh582d393a4408760p1fd4ddjsna38953b14404',
+          'x-rapidapi-host': 'v1-sneakers.p.rapidapi.com'
+        }
+      };
+      useEffect(() => {
+        async function getSneakers() {
+          axios.request(home).then(res => {
             setSneakers(res.data.results)
-        });
-    }, [url])
+            // .catch(function (error) {
+            //     console.error(error);
+            // });
+          });
+        }
+        getSneakers();
+      })
 
     function SneakerDisplay() {
         return (
@@ -58,7 +79,7 @@ function HomePage(props) {
                 <Container>
                     <h1>Heat</h1>
                     <p>
-                        The source for new heat dropping soon.
+                        High Expectations At All Times.
                     </p>
                 </Container>
             </Jumbotron>
@@ -86,7 +107,7 @@ function HomePage(props) {
                             <p></p>
                         </Carousel.Caption>
                     </Carousel.Item>
-                    <Carousel.Item>
+                    <Carousel.Item interval={3000}>
                         <img
                             className="mx-auto d-block w-50"
                             src="https://images.stockx.com/images/adidas-Yeezy-450-Cloud-White-Product.jpg?fit=fill&bg=FFFFFF&w=700&h=500&auto=format,compress&trim=color&q=90&dpr=2&updated_at=1615564111"

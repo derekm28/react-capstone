@@ -50,21 +50,14 @@ function SignUpPage({ signup }) {
         else {
             setFormErrors(result.errors);
         }
-        // if(formData.username
-        //     && formData.firstName
-        //     && formData.lastName
-        //     && formData.password
-        //     && formData.email){
-        //     setValid(true);
-        // }
-        // setSubmitted(true);
+
         const res = fetch("http://localhost:3001/auth/register", {
             method: "POST",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(formData)
         });
         console.log(res);
-        history.push('./');
+        history.push('/');
     }
 
     /**update form data field*/

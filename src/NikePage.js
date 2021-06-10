@@ -8,6 +8,8 @@ import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import ModalCard from './Modal';
+
 
 
 function NikePage(sneakerId) {
@@ -16,6 +18,7 @@ function NikePage(sneakerId) {
 
     const [sneakers, setSneakers] = useState(null);
     const [saved, setSaved] = useState();
+    const [modalShow, setModalShow] = useState(false);
     const Save = () => {
         const { hasSavedSneaker, saveSneaker } = useContext(UserContext);
 
@@ -50,14 +53,38 @@ function NikePage(sneakerId) {
     //     </div>
     // );
 
-    useEffect(() => {
-        async function getSneakers() {
-            axios.get(url).then(res => {
-                setSneakers(res.data.results);
-            });
+    // useEffect(() => {
+    //     async function getSneakers() {
+    //         axios.get(url).then(res => {
+    //             setSneakers(res.data.results);
+    //         });
+    //         if(modalShow){
+    //             getSneakers();
+    //         }
+    //     }
+    //     getSneakers();
+    // }, [url])
+
+    const nikes = {
+        method: 'GET',
+        url: 'https://v1-sneakers.p.rapidapi.com/v1/sneakers',
+        params: { limit: '100', brand: 'nike' },
+        headers: {
+            'x-rapidapi-key': 'd35e6f2cf6msh582d393a4408760p1fd4ddjsna38953b14404',
+            'x-rapidapi-host': 'v1-sneakers.p.rapidapi.com'
         }
-        getSneakers();
-    }, [url])
+    };
+    useEffect(() => {
+    async function getSneakers() {
+        axios.request(nikes).then(res => {
+            setSneakers(res.data.results)
+                // .catch(function (error) {
+                //     console.error(error);
+                // });
+        });
+    }
+    getSneakers();
+    })
 
     function SneakerDisplay() {
         return (
@@ -81,10 +108,15 @@ function NikePage(sneakerId) {
                                     <div>Release Date: {s.releaseDate}</div>
                                     <div>Retail Price: ${s.retailPrice}</div>
                                 </Card.Text>
-                                <Button variant="primary"
+                                {/* <Button variant="primary"
                                     //onClick={handleSave}
                                     disabled={saved}>
-                                    {saved ? 'Saved' : 'Save'}</Button>
+                                    {saved ? 'Saved' : 'Save'}</Button> */}
+                                <Button variant="primary" onClick={() => setModalShow(true)}>
+                                    Details
+                                </Button>
+
+
                             </Card.Body>
                         </Card>
                     ))
@@ -97,7 +129,7 @@ function NikePage(sneakerId) {
             <Jumbotron fluid>
                 <Container>
                     <Row>
-                    {/* <h1>Nike</h1> */}
+                        {/* <h1>Nike</h1> */}
                         <Col xs={6} md={4}>
 
                         </Col>
@@ -108,12 +140,15 @@ function NikePage(sneakerId) {
                             <Image src="https://i1.wp.com/sportsfinding.com/wp-content/uploads/2020/02/nike-swoosh-wikipedia.jpg?fit=580%2C350&ssl=1" thumbnail />
                         </Col> */}
                     </Row>
-
                 </Container>
             </Jumbotron>
             <div className='NikePage-cards'>
                 <div>
                     <SneakerDisplay />
+                    <ModalCard
+                                    show={modalShow}
+                                    onHide={() => setModalShow(false)}
+                    />
                 </div>
             </div>
         </div>

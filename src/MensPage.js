@@ -10,14 +10,35 @@ function MensPage(props){
 
         const [sneakers, setSneakers] = useState(null);
 
+        // useEffect(() => {
+        //     async function getSneakers(){
+        //     axios.get(url).then(res => {
+        //         setSneakers(res.data.results);
+        //     });
+        // }
+        // getSneakers();
+        // }, [url])
+
+        const mens = {
+          method: 'GET',
+          url: 'https://v1-sneakers.p.rapidapi.com/v1/sneakers',
+          params: { limit: '100', gender: "men" },
+          headers: {
+            'x-rapidapi-key': 'd35e6f2cf6msh582d393a4408760p1fd4ddjsna38953b14404',
+            'x-rapidapi-host': 'v1-sneakers.p.rapidapi.com'
+          }
+        };
         useEffect(() => {
-            async function getSneakers(){
-            axios.get(url).then(res => {
-                setSneakers(res.data.results);
+          async function getSneakers() {
+            axios.request(mens).then(res => {
+              setSneakers(res.data.results)
+              // .catch(function (error) {
+              //     console.error(error);
+              // });
             });
-        }
-        getSneakers();
-        }, [url])
+          }
+          getSneakers();
+        })
 
         function SneakerDisplay() {
             return (

@@ -49,18 +49,14 @@ function LogIn({ login }){
         else{
             setFormErrors(result.errors);
         }
-        // if(formData.username
-        //     && formData.password){
-        //     setValid(true);
-        // }
-        //setSubmitted(true);
+
         const res = fetch("http://localhost:3001/auth/token", {
             method: "POST",
             headers: { "Content-type": "application/json" },
             body: JSON.stringify(formData)
         });
         console.log(res);
-        history.push('./');
+        history.push('/');
     }
 
     /**update form data field */

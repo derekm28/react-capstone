@@ -12,7 +12,7 @@ function NavBar ({ logout }){
     function loggedInNav(){
         return (
             <Navbar bg="light" variant="light">
-                <Navbar.Brand href='/'>Heat</Navbar.Brand>
+                <Navbar.Brand href='/'>Heaat</Navbar.Brand>
                 <Nav className="mr-auto">
                 <Nav.Link href='/'>
                     Home
@@ -45,8 +45,8 @@ function NavBar ({ logout }){
 
     function loggedOutNav(){
         return (
-            <Navbar bg="light" variant="light">
-                <Navbar.Brand href='/'>Heat</Navbar.Brand>
+            <Navbar fixed='top' bg="light" variant="light">
+                <Navbar.Brand href='/'>Heaat</Navbar.Brand>
                 <Nav className="mr-auto">
                 <Nav.Link href='/'>
                     Home

@@ -18,7 +18,7 @@ class User {
    *
    * Returns { username, first_name, last_name, email }
    *
-   * Throws UnauthorizedError is user not found or wrong password.
+   * Throws UnauthorizedError if user not found or wrong password.
    **/
 
   static async authenticate(username, password) {
