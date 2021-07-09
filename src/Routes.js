@@ -10,6 +10,11 @@ import YeezyPage from './YeezyPage';
 import HomePage from './HomePage';
 import ProfileForm from './Profile';
 import PrivateRoute from './PrivateRoute';
+import BalenciagaPage from './BalenciagaPage';
+import GucciPage from './GucciPage';
+import DGPage from './D&GPage';
+import GivenchyPage from './GivenchyPage';
+import PradaPage from './PradaPage';
 
 /**Site-wide routes
  *
@@ -58,6 +63,26 @@ function Routes({ login, signup }) {
 
                 <Route exact path='/womens'>
                     <WomensPage />
+                </Route>
+
+                <Route exact path='/balenciaga'>
+                    <BalenciagaPage />
+                </Route>
+
+                <Route exact path='/prada'>
+                    <PradaPage />
+                </Route>
+
+                <Route exact path='/gucci'>
+                    <GucciPage />
+                </Route>
+
+                <Route exact path='/dg'>
+                    <DGPage />
+                </Route>
+
+                <Route exact path='/givenchy'>
+                    <GivenchyPage />
                 </Route>
 
                 <PrivateRoute exact path="/profile">

@@ -3,6 +3,7 @@ import { NavLink, Link } from 'react-router-dom';
 import UserContext from './UserContext';
 import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav';
+import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
 function NavBar ({ logout }){
@@ -66,6 +67,13 @@ function NavBar ({ logout }){
                 <Nav.Link href='/womens'>
                     Women's
                 </Nav.Link>
+                <NavDropdown title="Designer" id="Dropdown">
+                    <NavDropdown.Item href='balenciaga'>Balenciaga</NavDropdown.Item>
+                    <NavDropdown.Item href='prada'>Prada</NavDropdown.Item>
+                    <NavDropdown.Item href='gucci'>Gucci</NavDropdown.Item>
+                    <NavDropdown.Item href='givenchy'>Givenchy</NavDropdown.Item>
+                    <NavDropdown.Item href='dg'>D & G</NavDropdown.Item>
+                </NavDropdown>
                 <Nav.Link href='/signup'>
                     Sign Up
                 </Nav.Link>
