@@ -134,11 +134,8 @@ function NikePage(sneakerId) {
 
                         </Col>
                         <Col xs={6} md={4}>
-                            <Image src="https://i1.wp.com/sportsfinding.com/wp-content/uploads/2020/02/nike-swoosh-wikipedia.jpg?fit=580%2C350&ssl=1" roundedCircle thumbnail />
+                            <Image src="https://pngimg.com/uploads/nike/small/nike_PNG18.png" roundedCircle thumbnail />
                         </Col>
-                        {/* <Col xs={6} md={4}>
-                            <Image src="https://i1.wp.com/sportsfinding.com/wp-content/uploads/2020/02/nike-swoosh-wikipedia.jpg?fit=580%2C350&ssl=1" thumbnail />
-                        </Col> */}
                     </Row>
                 </Container>
             </Jumbotron>
