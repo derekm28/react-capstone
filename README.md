@@ -11,4 +11,3 @@ Features to be implemented:
 
 1. Favoriting
 2. Shopping Cart functionality
-3.
