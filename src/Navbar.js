@@ -13,7 +13,7 @@ function NavBar ({ logout }){
     function loggedInNav(){
         return (
             <Navbar bg="light" variant="light">
-                <Navbar.Brand href='/'>Heaat</Navbar.Brand>
+                <Navbar.Brand href='/'>HEAAT</Navbar.Brand>
                 <Nav className="mr-auto">
                 <Nav.Link href='/'>
                     Home
@@ -52,13 +52,13 @@ function NavBar ({ logout }){
                 <Nav.Link href='/'>
                     Home
                 </Nav.Link>
-                <Nav.Link href='/nike'>
+                <Nav.Link href='/shoes/nike'>
                     Nike
                 </Nav.Link>
-                <Nav.Link href='/jordan'>
+                <Nav.Link href='/shoes/jordan'>
                     Jordan
                 </Nav.Link>
-                <Nav.Link href='/yeezy'>
+                <Nav.Link href='/shoes/yeezy'>
                     Yeezy
                 </Nav.Link>
                 <Nav.Link href='/mens'>

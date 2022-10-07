@@ -60,36 +60,17 @@ function ShoePage() {
             'x-rapidapi-host': 'v1-sneakers.p.rapidapi.com'
         }
     };
-    // useEffect(() => {
-    //     async function getSneakers() {
-    //       axios.request(shoes).then(res => {
-    //         setSneakers(res.data.results)
-    //         .catch(function (error) {
-    //             console.log("this is an error");
-    //             console.error(error);
-    //         });
-    //       });
-    //     }
-    //     getSneakers();
-    //   })
 
     useEffect(() => {
         async function getSneakers() {
           try{
-            let response = await axios.get(shoes);
+            let response = await axios.get(shoes.url, shoes);
+            console.log(response);
             setSneakers(response.data.results)
           }
           catch (e){
               console.log("There is an error somewhere");
           }
-
-        //   axios.request(shoes).then(res => {
-        //     setSneakers(res.data.results)
-        //     .catch(function (error) {
-        //         console.log("this is an error");
-        //         console.error(error);
-        //     });
-        //   });
         }
         getSneakers();
       })
