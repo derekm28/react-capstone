@@ -2,10 +2,6 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import LogIn from './LogInPage';
 import SignUpPage from './SignUpPage';
-<<<<<<< HEAD
-import NikePage from './NikePage';
-=======
->>>>>>> refactor-to-shoepage
 import ShoePage from './ShoePage';
 import MensPage from './MensPage';
 import WomensPage from './WomensPage';

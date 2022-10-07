@@ -68,11 +68,11 @@ function NavBar ({ logout }){
                     Women's
                 </Nav.Link>
                 <NavDropdown title="Designer" id="Dropdown">
-                    <NavDropdown.Item href='balenciaga'>Balenciaga</NavDropdown.Item>
-                    <NavDropdown.Item href='prada'>Prada</NavDropdown.Item>
-                    <NavDropdown.Item href='gucci'>Gucci</NavDropdown.Item>
-                    <NavDropdown.Item href='givenchy'>Givenchy</NavDropdown.Item>
-                    <NavDropdown.Item href='dg'>D & G</NavDropdown.Item>
+                    <NavDropdown.Item href='/shoes/balenciaga'>Balenciaga</NavDropdown.Item>
+                    <NavDropdown.Item href='/shoes/prada'>Prada</NavDropdown.Item>
+                    <NavDropdown.Item href='/shoes/gucci'>Gucci</NavDropdown.Item>
+                    <NavDropdown.Item href='/shoes/givenchy'>Givenchy</NavDropdown.Item>
+                    <NavDropdown.Item href='/shoes/dg'>D & G</NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link href='/signup'>
                     Sign Up
