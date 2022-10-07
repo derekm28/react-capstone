@@ -6,18 +6,8 @@ import Container from 'react-bootstrap/Container';
 
 
 function MensPage(props){
-        const url = "https://api.thesneakerdatabase.com/v1/sneakers?limit=100&gender=men";
 
         const [sneakers, setSneakers] = useState(null);
-
-        // useEffect(() => {
-        //     async function getSneakers(){
-        //     axios.get(url).then(res => {
-        //         setSneakers(res.data.results);
-        //     });
-        // }
-        // getSneakers();
-        // }, [url])
 
         const mens = {
           method: 'GET',
@@ -32,9 +22,6 @@ function MensPage(props){
           async function getSneakers() {
             axios.request(mens).then(res => {
               setSneakers(res.data.results)
-              // .catch(function (error) {
-              //     console.error(error);
-              // });
             });
           }
           getSneakers();

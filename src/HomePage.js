@@ -12,12 +12,6 @@ function HomePage(props) {
     const [sneakers, setSneakers] = useState(null);
     const [saved, setSaved] = useState();
 
-    // useEffect(() => {
-    //     axios.get(url).then(res => {
-    //         setSneakers(res.data.results)
-    //     });
-    // }, [url])
-
     const home = {
         method: 'GET',
         url: 'https://v1-sneakers.p.rapidapi.com/v1/sneakers',
@@ -31,9 +25,6 @@ function HomePage(props) {
         async function getSneakers() {
           axios.request(home).then(res => {
             setSneakers(res.data.results)
-            // .catch(function (error) {
-            //     console.error(error);
-            // });
           });
         }
         getSneakers();

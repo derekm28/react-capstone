@@ -2,19 +2,17 @@ import React from 'react';
 import { Redirect, Route, Switch } from 'react-router-dom';
 import LogIn from './LogInPage';
 import SignUpPage from './SignUpPage';
+<<<<<<< HEAD
 import NikePage from './NikePage';
+=======
+>>>>>>> refactor-to-shoepage
 import ShoePage from './ShoePage';
 import MensPage from './MensPage';
 import WomensPage from './WomensPage';
-import YeezyPage from './YeezyPage';
 import HomePage from './HomePage';
 import ProfileForm from './Profile';
 import PrivateRoute from './PrivateRoute';
-import BalenciagaPage from './BalenciagaPage';
-import GucciPage from './GucciPage';
-import DGPage from './D&GPage';
-import GivenchyPage from './GivenchyPage';
-import PradaPage from './PradaPage';
+
 
 /**Site-wide routes
  *

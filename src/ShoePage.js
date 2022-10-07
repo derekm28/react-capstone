@@ -60,6 +60,7 @@ function ShoePage() {
             'x-rapidapi-host': 'v1-sneakers.p.rapidapi.com'
         }
     };
+<<<<<<< HEAD
     // useEffect(() => {
     //     async function getSneakers() {
     //       axios.request(shoes).then(res => {
@@ -72,16 +73,24 @@ function ShoePage() {
     //     }
     //     getSneakers();
     //   })
+=======
+>>>>>>> refactor-to-shoepage
 
     useEffect(() => {
         async function getSneakers() {
           try{
+<<<<<<< HEAD
             let response = await axios.get(shoes);
+=======
+            let response = await axios.get(shoes.url, shoes);
+            console.log(response);
+>>>>>>> refactor-to-shoepage
             setSneakers(response.data.results)
           }
           catch (e){
               console.log("There is an error somewhere");
           }
+<<<<<<< HEAD
 
         //   axios.request(shoes).then(res => {
         //     setSneakers(res.data.results)
@@ -90,6 +99,8 @@ function ShoePage() {
         //         console.error(error);
         //     });
         //   });
+=======
+>>>>>>> refactor-to-shoepage
         }
         getSneakers();
       })
