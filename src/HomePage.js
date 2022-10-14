@@ -24,7 +24,11 @@ function HomePage(props) {
       useEffect(() => {
         async function getSneakers() {
           axios.request(home).then(res => {
-            setSneakers(res.data.results)
+            const { results } = res.data;
+            setSneakers(results.filter(s => {
+                const { smallImageUrl } = s.media;
+                return smallImageUrl && smallImageUrl !== '';
+            }))
           });
         }
         getSneakers();
@@ -51,10 +55,6 @@ function HomePage(props) {
                                     <div>{s.colorway}</div>
                                     <div>Release Date: {s.releaseDate}</div>
                                     <div>Retail Price: ${s.retailPrice}</div>
-                                    {/* <Button variant="primary" className='btn btn-danger font-weight-bold text-uppercase'
-                                        //onClick={handleSave}
-                                        disabled={saved}>
-                                        {saved ? 'Saved' : 'Save'}</Button> */}
                                      <Button variant="primary">Save</Button>
                                 </Card.Text>
                             </Card.Body>

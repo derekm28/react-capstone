@@ -7,6 +7,7 @@ import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import ModalCard from './Modal';
 
 
 const supportedBrandConfigs = {
@@ -65,8 +66,11 @@ function ShoePage() {
         async function getSneakers() {
           try{
             let response = await axios.get(shoes.url, shoes);
-            console.log(response);
-            setSneakers(response.data.results)
+            const { results } = response.data;
+            setSneakers(results.filter(s => {
+                const { smallImageUrl } = s.media;
+                return smallImageUrl && smallImageUrl !== '';
+            }))
           }
           catch (e){
               console.log("There is an error somewhere");
