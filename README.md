@@ -1,4 +1,4 @@
-HEAAT (High Expectations At All Times) is a shallow clone of Stock X. Built with React, Express, Node.Js and PostgreSQL.
+HEAAT (High Expectations At All Times) is a tennis shoe release date app. Built with React, Express, Node.Js and PostgreSQL.
 
 Site: https://heaat.herokuapp.com/
 
