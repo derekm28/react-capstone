@@ -18,13 +18,23 @@ function MensPage(props){
             'x-rapidapi-host': 'v1-sneakers.p.rapidapi.com'
           }
         };
+
         useEffect(() => {
-          async function getSneakers() {
-            axios.request(mens).then(res => {
-              setSneakers(res.data.results)
-            });
-          }
+          async function getSneakers(){
+            try{
+              const response = await axios.get(mens.url, mens);
+              const { results } = response.data;
+              setSneakers(results.filter(s => {
+                const { smallImageUrl } = s.media;
+                return smallImageUrl && smallImageUrl !== '';
+              }))
+            }
+            catch(e){
+              console.log('Theres an error somewhere');
+            }
+          };
           getSneakers();
+
         })
 
         function SneakerDisplay() {

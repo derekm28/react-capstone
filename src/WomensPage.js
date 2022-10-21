@@ -18,11 +18,20 @@ function WomensPage(props){
             'x-rapidapi-host': 'v1-sneakers.p.rapidapi.com'
           }
         };
+
         useEffect(() => {
           async function getSneakers() {
-            axios.request(womens).then(res => {
-              setSneakers(res.data.results)
-            });
+            try{
+              const response = await axios.get(womens.url, womens);
+              const { results } = response.data;
+              setSneakers(results.filter(s => {
+                const { smallImageUrl } = s.media;
+                return smallImageUrl && smallImageUrl !== '';
+              }))
+            }
+            catch(e){
+              console.log('Theres an error somewhere');
+            }
           }
           getSneakers();
         })
