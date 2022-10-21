@@ -61,6 +61,9 @@ function NavBar ({ logout }){
                 <Nav.Link href='/shoes/yeezy'>
                     Yeezy
                 </Nav.Link>
+                <Nav.Link href='/shoes/off-white'>
+                    OFF WHITE
+                </Nav.Link>
                 <Nav.Link href='/mens'>
                     Men's
                 </Nav.Link>
@@ -71,8 +74,7 @@ function NavBar ({ logout }){
                     <NavDropdown.Item href='/shoes/balenciaga'>Balenciaga</NavDropdown.Item>
                     <NavDropdown.Item href='/shoes/prada'>Prada</NavDropdown.Item>
                     <NavDropdown.Item href='/shoes/gucci'>Gucci</NavDropdown.Item>
-                    <NavDropdown.Item href='/shoes/givenchy'>Givenchy</NavDropdown.Item>
-                    <NavDropdown.Item href='/shoes/dg'>D & G</NavDropdown.Item>
+                    <NavDropdown.Item href='/shoes/dior'>Dior</NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link href='/signup'>
                     Sign Up

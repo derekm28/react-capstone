@@ -39,6 +39,14 @@ const supportedBrandConfigs = {
     gucci: {
         logo: "https://www.gucci.com/medias/logo-gucci.png?context=bWFzdGVyfGltYWdlc3wxMDMzM3xpbWFnZS9wbmd8aW1hZ2VzL2g0NS9oNWIvOTE0ODc1MzUxMDQzMC5wbmd8MzU1YWQxZTU3NGQ4MGZkNzA3NjdmOWYzY2Y3ZDQ1OGNmZjBlNGRjYTVhOWYzMGQ0Y2QzNTdlYmZhYWJkMTZjNw",
         brandToApi: 'gucci',
+    },
+    dior: {
+        logo: "https://logolook.net/wp-content/uploads/2021/12/Dior-Logo.png",
+        brandToApi: 'dior',
+    },
+    "off-white": {
+        logo: "https://i.etsystatic.com/30029540/r/il/28ca64/3159047667/il_570xN.3159047667_lsj9.jpg",
+        brandToApi: 'off-white',
     }
 }
 
