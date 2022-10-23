@@ -75,6 +75,7 @@ function NavBar ({ logout }){
                     <NavDropdown.Item href='/shoes/prada'>Prada</NavDropdown.Item>
                     <NavDropdown.Item href='/shoes/gucci'>Gucci</NavDropdown.Item>
                     <NavDropdown.Item href='/shoes/dior'>Dior</NavDropdown.Item>
+                    <NavDropdown.Item href='/shoes/chanel'>Chanel</NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link href='/signup'>
                     Sign Up

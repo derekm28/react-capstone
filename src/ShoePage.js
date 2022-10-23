@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useParams } from "react-router-dom";
 import axios from 'axios';
-import { Card, Button } from "react-bootstrap";
+import { Card, Button, Modal } from "react-bootstrap";
 import Jumbotron from 'react-bootstrap/Jumbotron';
 import Container from 'react-bootstrap/Container';
 import Image from 'react-bootstrap/Image';
@@ -47,12 +47,17 @@ const supportedBrandConfigs = {
     "off-white": {
         logo: "https://i.etsystatic.com/30029540/r/il/28ca64/3159047667/il_570xN.3159047667_lsj9.jpg",
         brandToApi: 'off-white',
+    },
+    chanel: {
+        logo:'https://printablee.com/postpic/2012/12/coco-chanel-logo-clip-art_326106.jpg',
+        brandToApi: 'chanel',
     }
 }
 
 function ShoePage() {
     const { shoeBrand } = useParams();
     const [sneakers, setSneakers] = useState(null);
+    const [showModal, setShowModal] = useState(false);
     const brandConfigs = supportedBrandConfigs[shoeBrand];
     const params = { limit: '100', brand: brandConfigs.brandToApi }
 
@@ -101,7 +106,9 @@ function SneakerDisplay() {
                         colorway={s.colorway}
                         style={{ width: "18rem" }}
                         shoe={s.shoe}
-                        name={s.name}>
+                        name={s.name}
+                        onClick={setShowModal}
+                        >
                         <Card.Body>
                             <Card.Img variant="top" src={s.media.smallImageUrl} />
                             <Card.Title>{s.title}</Card.Title>
@@ -110,7 +117,7 @@ function SneakerDisplay() {
                                 <div>Release Date: {s.releaseDate}</div>
                                 <div>Retail Price: ${s.retailPrice}</div>
                             </Card.Text>
-                            <Button variant="primary">Save</Button>
+                            <Button variant="primary" onClick={() => setShowModal()}>Details</Button>
                         </Card.Body>
                     </Card>
                 ))
@@ -135,6 +142,10 @@ return (
         </Jumbotron>
         <div>
             <SneakerDisplay />
+            <ModalCard
+                show={showModal}
+                onHide={() => setShowModal(false)}
+                />
         </div>
     </div>
 );
