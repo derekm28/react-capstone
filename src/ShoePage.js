@@ -57,6 +57,7 @@ const supportedBrandConfigs = {
 function ShoePage() {
     const { shoeBrand } = useParams();
     const [sneakers, setSneakers] = useState(null);
+    const [sneakerModalData, setSneakerModalData] = useState({});
     const [showModal, setShowModal] = useState(false);
     const brandConfigs = supportedBrandConfigs[shoeBrand];
     const params = { limit: '100', brand: brandConfigs.brandToApi }
@@ -98,7 +99,6 @@ function SneakerDisplay() {
         <div className="row justify-content-center ">
             {sneakers
                 ? sneakers.map((s, idx) => (
-                    <>
                     <Card
                         key={s.id}
                         className="mr-2"
@@ -118,73 +118,17 @@ function SneakerDisplay() {
                                 <div>Release Date: {s.releaseDate}</div>
                                 <div>Retail Price: ${s.retailPrice}</div>
                             </Card.Text>
-                            <Button variant="primary" onClick={() => setShowModal()}>Details</Button>
+                            <Button variant="primary" onClick={() => {
+                                setSneakerModalData(s)
+                             setShowModal()}}>Details</Button>
                         </Card.Body>
                     </Card>
-                    <Modal
-                    size="lg"
-                    aria-labelledby="contained-modal-title-vcenter"
-                    centered
-                    >
-                    <Modal.Header closeButton>
-                        <Modal.Title
-                            id="contained-modal-title-vcenter"
-                            text="center">
-                               {s.title}
-                        </Modal.Title>
-                    </Modal.Header>
-
-                    <Modal.Body>
-                            <div>{s.colorway}</div>
-                            <div>Release Date: {s.releaseDate}</div>
-                            <div>Retail Price: ${s.retailPrice}</div>
-                        Shoe Details
-                    </Modal.Body>
-
-                    <Modal.Footer>
-                        <Button onClick={() => setShowModal(false)}>Close</Button>
-                    </Modal.Footer>
-                </Modal>
-                    </>
-
                 ))
                 : null}
         </div>
     );
 }
-// function ModalCard(props) {
 
-//     return (
-//         <div>
-//                 <Modal
-//                     {...props}
-//                     size="lg"
-//                     aria-labelledby="contained-modal-title-vcenter"
-//                     centered
-//                     >
-//                     <Modal.Header closeButton>
-//                         <Modal.Title
-//                             id="contained-modal-title-vcenter"
-//                             text="center">
-//                                {s.title}
-//                         </Modal.Title>
-//                     </Modal.Header>
-
-//                     <Modal.Body>
-//                             <div>{s.colorway}</div>
-//                             <div>Release Date: {s.releaseDate}</div>
-//                             <div>Retail Price: ${s.retailPrice}</div>
-//                         Shoe Details
-//                     </Modal.Body>
-
-//                     <Modal.Footer>
-//                         <Button onClick={props.onHide}>Close</Button>
-//                     </Modal.Footer>
-//                 </Modal>
-//         </div>
-
-//     );
-// }
 
 return (
     <div className='FrontPage'>
@@ -203,6 +147,7 @@ return (
         <div>
             <SneakerDisplay />
             <ModalCard
+                sneaker={sneakerModalData}
                 show={showModal}
                 onHide={() => setShowModal(false)}
             />

@@ -1,12 +1,11 @@
 import Modal from 'react-bootstrap/Modal';
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
-import { Card, Button } from 'react-bootstrap';
-import axios from 'axios';
+import {  Button } from 'react-bootstrap';
+
 
 
 function ModalCard(props) {
-
+const {sneaker} = props;
     return (
         <div>
                 <Modal
@@ -19,7 +18,9 @@ function ModalCard(props) {
                         <Modal.Title
                             id="contained-modal-title-vcenter"
                             text="center">
-                            Shoe Title
+                            {sneaker.title}
+                            {sneaker.brand}
+
           </Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
