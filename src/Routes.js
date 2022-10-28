@@ -1,14 +1,9 @@
-import React from 'react';
-import { Redirect, Route, Switch } from 'react-router-dom';
-import LogIn from './LogInPage';
-import SignUpPage from './SignUpPage';
-import ShoePage from './ShoePage';
-import MensPage from './MensPage';
-import WomensPage from './WomensPage';
-import HomePage from './HomePage';
-import ProfileForm from './Profile';
-import PrivateRoute from './PrivateRoute';
-
+import React from "react";
+import { Redirect, Route, Switch } from "react-router-dom";
+import ShoePage from "./ShoePage";
+import MensPage from "./MensPage";
+import WomensPage from "./WomensPage";
+import HomePage from "./HomePage";
 
 /**Site-wide routes
  *
@@ -17,48 +12,29 @@ import PrivateRoute from './PrivateRoute';
  * Visiting a non-existant route redirects to the homepage
  */
 
-function Routes({ login, signup }) {
-    console.debug(
-        'Routes',
-        `login=${typeof login}`,
-        `register=${typeof register}`
-    );
-
+function Routes() {
     return (
         <div className="Routes">
             <Switch>
-                <Route exact path='/'>
+                <Route exact path="/">
                     <HomePage />
                 </Route>
 
-                <Route exact path='/signup'>
-                    <SignUpPage signup={signup} />
-                </Route>
-
-                <Route exact path='/login'>
-                    <LogIn login={login} />
-                </Route>
-
-                <Route exact path='/shoes/:shoeBrand'>
+                <Route exact path="/shoes/:shoeBrand">
                     <ShoePage />
                 </Route>
 
-                <Route exact path='/mens'>
+                <Route exact path="/mens">
                     <MensPage />
                 </Route>
 
-                <Route exact path='/womens'>
+                <Route exact path="/womens">
                     <WomensPage />
                 </Route>
-
-                <PrivateRoute exact path="/profile">
-                    <ProfileForm />
-                </PrivateRoute>
 
                 <Redirect exact to="/" />
             </Switch>
         </div>
-
     );
 }
 
