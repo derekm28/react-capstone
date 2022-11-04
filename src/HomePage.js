@@ -1,80 +1,81 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
-import Carousel from 'react-bootstrap/Carousel'
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Carousel from "react-bootstrap/Carousel";
 import { Card, Button } from "react-bootstrap";
-import Jumbotron from 'react-bootstrap/Jumbotron';
-import Container from 'react-bootstrap/Container';
+import Jumbotron from "react-bootstrap/Jumbotron";
+import Container from "react-bootstrap/Container";
 
-function HomePage(props) {
-
-    const url = "https://api.thesneakerdatabase.com/v1/sneakers?limit=100";
-
+function HomePage() {
     const [sneakers, setSneakers] = useState(null);
-    const [saved, setSaved] = useState();
 
     const home = {
-        method: 'GET',
-        url: 'https://v1-sneakers.p.rapidapi.com/v1/sneakers',
-        params: { limit: '100' },
+        method: "GET",
+        url: "https://v1-sneakers.p.rapidapi.com/v1/sneakers",
+        params: { limit: "100" },
         headers: {
-          'x-rapidapi-key': 'd35e6f2cf6msh582d393a4408760p1fd4ddjsna38953b14404',
-          'x-rapidapi-host': 'v1-sneakers.p.rapidapi.com'
-        }
-      };
-      useEffect(() => {
+            "x-rapidapi-key":
+                "d35e6f2cf6msh582d393a4408760p1fd4ddjsna38953b14404",
+            "x-rapidapi-host": "v1-sneakers.p.rapidapi.com",
+        },
+    };
+    useEffect(() => {
         async function getSneakers() {
-          axios.request(home).then(res => {
-            const { results } = res.data;
-            setSneakers(results.filter(s => {
-                const { smallImageUrl } = s.media;
-                return smallImageUrl && smallImageUrl !== '';
-            }))
-          });
+            axios.request(home).then(res => {
+                const { results } = res.data;
+                setSneakers(
+                    results.filter(s => {
+                        const { smallImageUrl } = s.media;
+                        return smallImageUrl && smallImageUrl !== "";
+                    }),
+                );
+            });
         }
         getSneakers();
-      })
+    });
 
     function SneakerDisplay() {
         return (
             <div className="row justify-content-center ">
                 {sneakers
-                    ? sneakers.map((s, idx) => (
-                        <Card
-                            key={s.id}
-                            className="mr-2"
-                            title={s.title}
-                            brand={s.brand}
-                            colorway={s.colorway}
-                            style={{ width: "18rem" }}
-                            shoe={s.shoe}
-                            name={s.name}>
-                            <Card.Body>
-                                <Card.Img variant="top" src={s.media.smallImageUrl} />
-                                <Card.Title>{s.title}</Card.Title>
-                                <Card.Text>
-                                    <div>{s.colorway}</div>
-                                    <div>Release Date: {s.releaseDate}</div>
-                                    <div>Retail Price: ${s.retailPrice}</div>
-                                     <Button variant="primary">Save</Button>
-                                </Card.Text>
-                            </Card.Body>
-                        </Card>
-                    ))
+                    ? sneakers.map(s => (
+                          <Card
+                              key={s.id}
+                              className="mr-2"
+                              title={s.title}
+                              brand={s.brand}
+                              colorway={s.colorway}
+                              style={{ width: "18rem" }}
+                              shoe={s.shoe}
+                              name={s.name}
+                          >
+                              <Card.Body>
+                                  <Card.Img
+                                      variant="top"
+                                      src={s.media.smallImageUrl}
+                                  />
+                                  <Card.Title>{s.title}</Card.Title>
+                                  <Card.Text>
+                                      <div>{s.colorway}</div>
+                                      <div>Release Date: {s.releaseDate}</div>
+                                      <div>Retail Price: ${s.retailPrice}</div>
+                                      <Button variant="primary">Save</Button>
+                                  </Card.Text>
+                              </Card.Body>
+                          </Card>
+                      ))
                     : null}
             </div>
         );
     }
     return (
-        <div className='HomePage'>
+        <div className="HomePage">
             <Jumbotron fluid>
                 <Container>
                     <h1>H.E.A.A.T.</h1>
-                    <p>
-                        High Expectations At All Times.
-                    </p>
+                    <p>High Expectations At All Times.</p>
                 </Container>
             </Jumbotron>
-            <div className='HomePage-cards'>
+            <div className="HomePage-cards">
                 <Carousel>
                     <Carousel.Item interval={3000}>
                         <img
@@ -115,10 +116,7 @@ function HomePage(props) {
                 <SneakerDisplay />
             </div>
         </div>
-
     );
-
-
 }
 
 export default HomePage;
