@@ -1,4 +1,6 @@
-HEAAT (High Expectations At All Times) is a tennis shoe release date app. Built with React, Express, Node.Js and PostgreSQL.
+# HEAAT (High Expectations At All Times)
+
+A tennis shoe release date app. Built with React, Express, Node.Js and PostgreSQL.
 
 Site: https://heaat.herokuapp.com/
 
