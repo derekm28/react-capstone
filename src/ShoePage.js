@@ -105,7 +105,7 @@ function ShoePage() {
                               title={s.title}
                               brand={s.brand}
                               colorway={s.colorway}
-                              style={{ width: "18rem" }}
+                              style={{ width: "14rem" }}
                               shoe={s.shoe}
                               name={s.name}
                               onClick={setShowModal}

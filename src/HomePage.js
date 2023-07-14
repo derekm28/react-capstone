@@ -44,7 +44,7 @@ function HomePage() {
                               title={s.title}
                               brand={s.brand}
                               colorway={s.colorway}
-                              style={{ width: "18rem" }}
+                              style={{ width: "14rem" }}
                               shoe={s.shoe}
                               name={s.name}
                           >
@@ -69,11 +69,13 @@ function HomePage() {
     }
     return (
         <div className="HomePage">
-            <Jumbotron fluid>
-                <Container>
-                    <h1>H.E.A.A.T.</h1>
-                    <p>High Expectations At All Times.</p>
-                </Container>
+            <Jumbotron className="row justify-content-center">
+                <div>
+                    <Container>
+                        <h1>H.E.A.A.T.</h1>
+                        <p>High Expectations At All Times.</p>
+                    </Container>
+                </div>
             </Jumbotron>
             <div className="HomePage-cards">
                 <Carousel>
